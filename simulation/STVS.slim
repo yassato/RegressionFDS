@@ -1,0 +1,117 @@
+// set up a simple neutral simulation
+initialize() {
+	initializeMutationRate(1e-6);
+	
+	// m1 mutation type: neutral
+	initializeMutationType("m1", 0.5, "f", 0.0);
+	
+	// m2 mutation type: spatio-temporal variation in fitness 
+	initializeMutationType("m2", 0.0, "f", 0.0);
+	m2.color = "skyblue";
+	
+	// m3 QTLs
+	initializeMutationType("m3", 0.5, "f", 0.0);
+	m3.convertToSubstitution = F;
+	m3.color = "red";
+
+	// g1 genomic element type: uses m1 for all mutations
+	initializeGenomicElementType("g1", c(m1,m2,m3), c(999,0.09,9));
+	
+	// 3 chromosomes of length 150 kb with uniform recombination
+	initializeGenomicElement(g1, 0, 149999);
+	rates = c(1e-5, 0.5, 1e-5, 0.5, 1e-5);
+	ends = c(49999, 50000, 99999, 100000, 149999);
+	initializeRecombinationRate(rates, ends);
+}
+
+// create a population of 500 individuals
+1 {
+	for(i in 1:10) {
+		sim.addSubpop(paste(c("p",i),sep=""), 200);
+	}
+	p1.setMigrationRates(p2, 0.001);
+	p2.setMigrationRates(p3, 0.001);
+	p3.setMigrationRates(p4, 0.001);
+	p4.setMigrationRates(p5, 0.001);
+	p5.setMigrationRates(p6, 0.001);
+	p6.setMigrationRates(p7, 0.001);
+	p7.setMigrationRates(p8, 0.001); 
+	p8.setMigrationRates(p9, 0.001); 
+	p9.setMigrationRates(p10, 0.001); 
+	p10.setMigrationRates(p1, 0.001);
+}
+
+fitness(m3) {
+	phenotype = sum(c(genome1,genome2).countOfMutationsOfType(m3));
+	return 1.5 - (phenotype - 10.0)^2 * 0.005;
+}
+
+fitness(m2,p1) {
+	if(sim.generation % 2 == 0) {
+	return 1.5 - 0.1;
+	} else {
+	return 1.5 + 0.1;	
+	}
+}
+
+fitness(m2,p2) {
+	return 1.5 + 0.1;	
+}
+
+fitness(m2,p3) {
+	if(sim.generation % 2 == 0) {
+	return 1.5 + 0.1;
+	} else {
+	return 1.5 - 0.1;	
+	}
+}
+
+fitness(m2,p4) {
+	return 1.5 - 0.1;	
+}
+
+fitness(m2,p5) {
+	if(sim.generation % 2 == 0) {
+	return 1.5 - 0.1;
+	} else {
+	return 1.5 + 0.1;	
+	}
+}
+
+fitness(m2,p6) {
+	if(sim.generation % 2 == 0) {
+	return 1.5 - 0.1;
+	} else {
+	return 1.5 + 0.1;	
+	}
+}
+
+fitness(m2,p7) {
+	return 1.5 + 0.1;	
+}
+
+fitness(m2,p8) {
+	if(sim.generation % 2 == 0) {
+	return 1.5 + 0.1;
+	} else {
+	return 1.5 - 0.1;	
+	}
+}
+
+fitness(m2,p9) {
+	return 1.5 - 0.1;	
+}
+
+fitness(m2,p10) {
+	if(sim.generation % 2 == 0) {
+	return 1.5 - 0.1;
+	} else {
+	return 1.5 + 0.1;	
+	}
+}
+
+
+// output samples of 10 genomes periodically, all fixed mutations at end
+2000 late() { sim.outputFixedMutations(); 
+	c(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10).individuals.genomes.outputVCF(paste(c("output/",getSeed(),"_STVS.vcf"),sep=""));
+}

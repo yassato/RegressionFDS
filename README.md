@@ -1,6 +1,6 @@
 # RegressionFDS
 
-## /simulation
+### /simulation
 A folder including SLiM and GWAS simulations.  
 
 SLiM codes (xxxx.slim) for  
@@ -14,7 +14,7 @@ GWAS simulatino using the SLiM outputs.
 /output  
 Folder to store SLiM and GWAS output files.  
 
-## /application
+### /application
 A folder including R source codes and input files for pilot tests using <i>Arabidopsis</i>.  
 
 - pheno_branchNum.csv

@@ -9,7 +9,7 @@ SLiM codes (xxxx.slim) for
 - overdominance (OD);  
 - and Spatio-temporally varying selection (STVS).  
 
-GWAS simulatino using the SLiM outputs.  
+GWAS simulation using the SLiM outputs.  
 
 /output  
 Folder to store SLiM and GWAS output files.  
@@ -17,5 +17,5 @@ Folder to store SLiM and GWAS output files.
 ### /application
 A folder including R source codes and input files for pilot tests using <i>Arabidopsis</i>.  
 
-- pheno_branchNum.csv
-CSV file including a list of accession and phenotype data on the branch numbers.   
+- pheno_branchNum.csv  
+CSV file including a list of accessions and phenotype data on the branch numbers.   

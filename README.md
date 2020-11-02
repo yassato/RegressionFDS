@@ -23,4 +23,4 @@ Folder to store SLiM and GWAS output files.
 A folder including R source codes and input files for pilot tests using <i>Arabidopsis</i>.  
 
 - pheno_branchNum.csv  
-CSV file including a list of accessions and phenotype data on the branch numbers.   
+CSV file including a list of accessions branch number data on <i>Arabidopsis thaliana</i>.   

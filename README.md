@@ -13,7 +13,7 @@ CSV file including an accession list and branch number data of <i>Arabidopsis th
 
 
 ### /simulation
-SLiM and GWAS simulations.  
+Source codes for SLiM and GWAS simulations.  
 
 SLiM codes (xxxx.slim) for  
 - negative frequency-dependent selection (NFDS);  

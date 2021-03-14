@@ -19,7 +19,7 @@ SLiM codes (xxxx.slim) for
 - negative frequency-dependent selection (NFDS);  
 - positive frequency-dependent selection (PFDS);  
 - overdominance (OD);  
-- and Spatio-temporally varying selection (STVS).  
+- and spatiotemporally varying selection (STVS).  
 
 GWAS simulation using the SLiM outputs.  
 

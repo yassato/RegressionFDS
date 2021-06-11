@@ -3,14 +3,14 @@ Source code of Sato et al. "Detecting frequency-dependent selection using a gene
 
 ## Directory
 
-### /application
+### ./application
 R source code or input files for pilot tests using real data.  
 
 - pheno_branchNum.csv  
 CSV file including an accession list and branch number data of <i>Arabidopsis thaliana</i>.  
 
 
-### /simulation
+### ./simulation
 Source code for SLiM and GWAS simulations.  
 
 SLiM codes (xxxx.slim) for  

@@ -2,7 +2,7 @@
 
 ### Forward Ising simulation  
 - IsingGenoWeighted.R  
-R script for the forward Ising simulation when transition probability is weighted following Mendelian inheritance.  
+R script for the forward Ising simulation when transition probabilities are weighted following Mendelian inheritance.  
   
 ### Fitness function  
 

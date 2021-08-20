@@ -1,7 +1,7 @@
 # File description  
 ### GLMM analysis of *Arabidopsis halleri* 
 - Ahal_FieldSurvey.R  
-Poisson GLMM of the flower number in wild *Arabidopsis halleri* in a natural population. Data are available at Dryad (https://doi.org/10.5061/dryad.53k2d).  
+Poisson GLMM of the flower number in wild *Arabidopsis halleri* in a natural population. Data are available via Dryad repository (https://doi.org/10.5061/dryad.53k2d).  
     
 ### GLMM analysis of *Ischnura elegans*    
 - damselfly_cage_data.R  

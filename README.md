@@ -3,24 +3,8 @@ Source code of Sato et al. "Detecting frequency-dependent selection using a gene
 
 ## Directory
 
-### ./application
-R source code or input files for pilot tests using real data.  
+### application  
+Source code and/or input data for empirical data analyses on *Arabidopsis halleri*, *Ischnura elegans*, and *Arabidopsis thaliana*.
 
-- pheno_branchNum.csv  
-CSV file including an accession list and branch number data of <i>Arabidopsis thaliana</i>.  
-
-
-### ./simulation
+### simulation  
 Source code for SLiM and GWAS simulations.  
-
-SLiM codes (xxxx.slim) for  
-- negative frequency-dependent selection (NFDS);  
-- positive frequency-dependent selection (PFDS);  
-- overdominance (OD);  
-- and spatiotemporally varying selection (STVS).  
-
-GWAS simulation using the SLiM outputs.  
-
-/output  
-Folder to store SLiM and GWAS output files.  
-

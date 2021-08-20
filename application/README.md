@@ -3,7 +3,7 @@
 ###  
 ### *Ischnura elegans* analysis  
 - damselfly_cage_data.R  
-R script for Poisson GLMMs on a damlselfly, *Ischnura elegans*. Input data are available upon request for Y. Takahashi.  
+R script for Poisson GLMMs on a damselfly, *Ischnura elegans*. Input data are available upon request for Y. Takahashi.  
   
   
 ### Branch number GWAS in *Arabidopsis thaliana*  

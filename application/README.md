@@ -11,10 +11,10 @@ Poisson GLMMs on a damselfly, *Ischnura elegans*. Input data are available upon 
 Field GWAS of the branch number using 199 accessions of *A. thaliana*.  
   
 - BranchNo2019GWASfigure.R  
-Figure presentations for the branch number GWAS, including Manhattan and QQ plots.   
+Manhattan and QQ plots for the output from "BranchNo2019GWAS.R".  
   
 - pheno_branchNum.csv  
-Accession list and input phenotype data for "BranchNo2019GWAS.R".  
+Accession list and phenotype data for "BranchNo2019GWAS.R".  
   
 - reshapeSNP.R  
 R script to prepare genotype data for for "BranchNo2019GWAS.R".  

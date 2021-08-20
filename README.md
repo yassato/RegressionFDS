@@ -1,4 +1,4 @@
-# Regression model of frequency-dependent selection  
+# Genetic marker regression of frequency-dependent selection  
 Source code of Sato et al. "Detecting frequency-dependent selection using a genetic marker regression of fitness components".  
 
 ## Directory

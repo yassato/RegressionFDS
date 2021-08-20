@@ -1,4 +1,4 @@
-# Single-marker analysis on a damselfly, Ischnura elegans
+# Single-marker analysis using a damselfly, Ischnura elegans
 
 # load library
 library(lme4)

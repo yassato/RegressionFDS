@@ -25,7 +25,3 @@ d = data.frame(d,f_sim)
 # Poisson GLMMs
 summary(glmer(matureeggnumber~factor(morph)*f_sim+density+(1|cageID/experimentID),data=d,family=poisson)) #morph x f_sim not signif.
 summary(glmer(matureeggnumber~factor(morph)+f_sim+density+(1|cageID/experimentID),data=d,family=poisson))
-
-# see figure
-boxplot(log(matureeggnumber+1)~factor(morph):factor(f_sim),data=d,las=1,col=rep(c("white","grey"),3))
-

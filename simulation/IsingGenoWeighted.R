@@ -1,9 +1,6 @@
-##############################
-#Some examples of Ising model#
-##############################
+# Forward Ising simulation with Mendelian inheritance
 
-#define functions
-
+# define functions
 XiXj1 = function(id,dmat,range) {
   xi = Xi[id]
   j = as.numeric(which((dmat[,id]<=range)&(dmat[,id]>0)))
@@ -69,7 +66,7 @@ xixj = c()
 for(i in 1:N) xixj = c(xixj, XiXj2(i,group=group))
 Ei_t0 = (J*xixj+h*Xi)
 
-#MCMC by Gibbs sampling
+# MCMC
 for(j in 1:200) {
   Xi_t0 = Xi
   xixj_t0 = xixj
@@ -77,11 +74,11 @@ for(j in 1:200) {
   perm = sample(1:N,N)
   for(i in perm) {
     Xi[i] = sample(c(-1,0,1),1,prob=prob(i,group))
-    #xixj[i] = XiXj1(i,dmat=dmat,range=sqrt(1))
-    xixj[i] = XiXj2(i,group=group)
+    xixj[i] = XiXj1(i,dmat=dmat,range=sqrt(1)) # continuous setting runs when XiXj1 is selected
+    # xixj[i] = XiXj2(i,group=group) # split setting runs when XiXj2 is selected
     Ei = (J*xixj[i]+h*Xi[i]) #set the energy positive to maximize itself
     
-    #Metropolis algorithm
+    # Metropolis algorithm
     if(Ei_t0[i]<=Ei) {
       Xi[i] = Xi[i]; xixj[i] = xixj[i]; Ei_t0[i] = Ei
     } else if(runif(1,0,1)<exp(Ei-Ei_t0[i])) {

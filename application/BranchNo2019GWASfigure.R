@@ -134,15 +134,3 @@ gaston::qqplot.pvalues(res,las=1,main="")
 
 dev.off()
 
-
-#
-snp = read.csv("./geneList/210604_BranchNoNeiGWASbolting_CHZ2019_scaledLMM_0001_P_nei_10kb.txt",header=T,sep="\t")
-
-beta = c()
-for(i in 1:nrow(snp)){
-  beta = rbind(beta,
-  gwas_out[(gwas_out$Chr==snp$Chr[i])&(gwas_out$Position==snp$Pos[i]),c("Chr","Position","beta_nei","P_nei","beta_sxn","P_sxn")]
-  )
-}
-
-write.csv(beta,"beta_nei.csv")

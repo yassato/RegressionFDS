@@ -15,5 +15,10 @@ Figure presentation for the branch number GWAS.
   
 - pheno_branchNum.csv  
 Accession list and input phenotype data for "BranchNo2019GWAS.R".  
+  
 - reshapeSNP.R  
+R script to prepare genotype data for for "BranchNo2019GWAS.R".  
+  
 - subsetSNP.py  
+Python script to extract genotype data from .hdf available at AraGWAS catalog.  
+  

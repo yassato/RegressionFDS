@@ -15,3 +15,5 @@ negative frequency-dependent selection (NFDS); positive frequency-dependent sele
 GWAS simulation and power analysis using the SLiM output.  
 - outputFigures.R  
 Figure presentation for the GWAS simulation.  
+- /output  
+A folder to save SLiM and R outputs.  

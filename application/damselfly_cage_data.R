@@ -28,10 +28,14 @@ summary(glmer(matureeggnumber~morph+f_sim+density+(1|cageID/experimentID),data=d
 
 # Figure
 svg("damselfly_plot.svg",width=5,height=5)
+
+# observed
 pch = rep(NA,length(d$morph))
 pch[d$morph==-1] = 1; pch[d$morph==1] = 16
 plot(log(matureeggnumber)~jitter(frequency),data=d,pch=pch,las=1,col="grey",
      ylab="log(no. of eggs)",xlab="phenotype-level frequency of andromorph",cex.lab=1.2,xlim=c(0,1))
+
+# predicted (see Appendix S3)
 b0 = 4.55; b1 = 0.021; b2 = -0.878; b12 = 0.04
 curve((b12+b2)*(2*x-1)+b0+b1,add=T,
       cex.axis=1.2,cex.lab=1.2,col=grey(0.0,1.0),lwd=1.5)
@@ -39,4 +43,5 @@ curve((b12-b2)*(2*x-1)+b0-b1,add=T,col=grey(0.0,0.33),lwd=1.5)
 curve(2*b2*x*(2*x-1)+(b12-b2)*(2*x-1)+b0-b1+2*b1*x,add=T,lty=2)
 f_star = 0.5-(b1/(2*b2))
 points(f_star,(b12+b2)*(2*f_star-1)+b0+b1,pch=16,cex=1.5)
+
 dev.off()

@@ -1,0 +1,1394 @@
+% Copyright (C) 1988, 2010 Oren Patashnik.
+% Unlimited copying and redistribution of this file are permitted if it
+% is unmodified.  Modifications (and their redistribution) are also
+% permitted, as long as the resulting file is renamed.
+
+@preamble{ "\newcommand{\noopsort}[1]{} "
+        # "\newcommand{\printfirst}[2]{#1} "
+        # "\newcommand{\singleletter}[1]{#1} "
+        # "\newcommand{\switchargs}[2]{#2#1} " }
+
+@Article{bates2015,
+    title = {Fitting Linear Mixed-Effects Models Using {lme4}},
+    author = {Douglas Bates and Martin M{\"a}chler and Ben Bolker and Steve Walker},
+    journal = {Journal of Statistical Software},
+    year = {2015},
+    volume = {67},
+    number = {1},
+    pages = {1--48},
+    doi = {10.18637/jss.v067.i01},
+  }
+
+@article{van2001frequency,
+  title={Frequency-dependent male mate harassment and intra-specific variation in its avoidance by females of the damselfly \textit{Ischnura elegans}},
+  author={Van Gossum, Hans and Stoks, Robby and De Bruyn, Luc},
+  journal={Behavioral Ecology and Sociobiology},
+  volume={51},
+  number={1},
+  pages={69--75},
+  year={2001},
+  publisher={Springer}
+},
+
+@article{van1999male,
+  title={Male choice for female colour morphs in \textit{Ischnura elegans} ({O}donata, {C}oenagrionidae): testing the hypotheses},
+  author={Van Gossum, Hans and Stoks, Robby and Matthysen, Erik and Valck, Famke and De Bruyn, Luc},
+  journal={Animal Behaviour},
+  volume={57},
+  number={6},
+  pages={1229--1232},
+  year={1999},
+  publisher={Elsevier}
+},
+
+@article{le2015evolutionary,
+  title={Evolutionary time-series analysis reveals the signature of frequency-dependent selection on a female mating polymorphism},
+  author={Le Rouzic, Arnaud and Hansen, Thomas F and Gosden, Thomas P and Svensson, Erik I},
+  journal={The American Naturalist},
+  volume={185},
+  number={6},
+  pages={E182--E196},
+  year={2015},
+  publisher={University of Chicago Press Chicago, IL}
+},
+
+@article{sanchez2005hybridization,
+  title={Hybridization and the inheritance of female colour polymorphism in two ischnurid damselflies ({O}donata: {C}oenagrionidae)},
+  author={S{\'a}nchez-Guill{\'e}n, Raa and Van Gossum, H and Cordero Rivera, A},
+  journal={Biological Journal of the Linnean Society},
+  volume={85},
+  number={4},
+  pages={471--481},
+  year={2005},
+  publisher={Oxford University Press}
+},
+
+@article{johnson1964inheritance,
+  title={The inheritance of female dimorphism in the damselfly, Ischnura damula},
+  author={Johnson, Clifford},
+  journal={Genetics},
+  volume={49},
+  number={3},
+  pages={513},
+  year={1964},
+  publisher={Genetics Society of America}
+},
+
+@article{takahashi2014antagonistic,
+  title={Antagonistic selection factors induce a continuous population divergence in a polymorphism},
+  author={Takahashi, Y and Nagata, N and Kawata, M},
+  journal={Heredity},
+  volume={112},
+  number={4},
+  pages={391--398},
+  year={2014},
+  publisher={Nature Publishing Group}
+},
+
+@article{asmussen2004frequency,
+  title={Frequency-dependent selection with dominance: a window onto the behavior of the mean fitness},
+  author={Asmussen, Marjorie A and Cartwright, Reed A and Spencer, Hamish G},
+  journal={Genetics},
+  volume={167},
+  number={1},
+  pages={499--512},
+  year={2004},
+  publisher={Oxford University Press}
+},
+
+@article{potts_1952, 
+    title={Some generalized order-disorder transformations}, volume={48}, 
+    DOI={10.1017/S0305004100027419}, 
+    number={1}, journal={Mathematical Proceedings of the Cambridge Philosophical Society}, 
+    publisher={Cambridge University Press}, 
+    author={Potts, R. B.}, 
+    year={1952}, 
+    pages={106–109}
+},
+
+@article{asmussen_frequency-dependent_1990,
+	title = {Frequency-dependent selection: the high potential for permanent genetic variation in the diallelic, pairwise interaction model},
+	volume = {125},
+	issn = {0016-6731},
+	shorttitle = {Frequency-dependent selection},
+	abstract = {A detailed analytic and numerical study is made of the potential for permanent genetic variation in frequency-dependent models based on pairwise interactions among genotypes at a single diallelic locus. The full equilibrium structure and qualitative gene-frequency dynamics are derived analytically for a symmetric model, in which pairwise fitnesses are chiefly determined by the genetic similarity of the individuals involved. This is supplemented by an extensive numerical investigation of the general model, the symmetric model, and nine other special cases. Together the results show that there is a high potential for permanent genetic diversity in the pairwise interaction model, and provide insight into the extent to which various forms of genotypic interactions enhance or reduce this potential. Technically, although two stable polymorphic equilibria are possible, the increased likelihood of maintaining both alleles, and the poor performance of protected polymorphism conditions as a measure of this likelihood, are primarily due to a greater variety and frequency of equilibrium patterns with one stable polymorphic equilibrium, in conjunction with a disproportionately large domain of attraction for stable internal equilibria.},
+	number = {1},
+	journal = {Genetics},
+	author = {Asmussen, M A and Basnayake, E},
+	month = may,
+	year = {1990},
+	keywords = {Alleles, Gene Frequency, Genetic Variation, Genotype, Models, Genetic, Selection, Genetic},
+	pages = {215--230}
+},
+
+@article{weiner1990asymmetric,
+  title={Asymmetric competition in plant populations},
+  author={Weiner, Jacob},
+  journal={Trends in Ecology \& Evolution},
+  volume={5},
+  number={11},
+  pages={360--364},
+  year={1990},
+  publisher={Elsevier}
+},
+
+@article{schneider2006multilocus,
+  title={A multilocus-multiallele analysis of frequency-dependent selection induced by intraspecific competition},
+  author={Schneider, Kristan A},
+  journal={Journal of Mathematical Biology},
+  volume={52},
+  number={4},
+  pages={483--523},
+  year={2006},
+  publisher={Springer}
+},
+
+@article{schneider2010maximization,
+  title={Maximization principles for frequency-dependent selection {II}: the one-locus multiallele case},
+  author={Schneider, Kristan Alexander},
+  journal={Journal of Mathematical Biology},
+  volume={61},
+  number={1},
+  pages={95--132},
+  year={2010},
+  publisher={Springer}
+},
+
+@article{takahashi2018balanced,
+  title={Balanced genetic diversity improves population fitness},
+  author={Takahashi, Yuma and Tanaka, Ryoya and Yamamoto, Daisuke and Noriyuki, Suzuki and Kawata, Masakado},
+  journal={Proceedings of the Royal Society B: Biological Sciences},
+  volume={285},
+  number={1871},
+  pages={20172045},
+  year={2018},
+  publisher={The Royal Society}
+},
+
+@article{trotter_generation_2008,
+	title = {The Generation and Maintenance of Genetic Variation by Frequency-Dependent Selection: Constructing Polymorphisms Under the Pairwise Interaction Model},
+	volume = {180},
+	issn = {0016-6731, 1943-2631},
+	shorttitle = {The Generation and Maintenance of Genetic Variation by Frequency-Dependent Selection},
+	doi = {10.1534/genetics.108.088880},
+	number = {3},
+	urldate = {2020-08-11},
+	journal = {Genetics},
+	author = {Trotter, Meredith V. and Spencer, Hamish G.},
+	month = nov,
+	year = {2008},
+	pages = {1547--1557}
+},
+
+@article{schneider_maximization_2008,
+	title = {Maximization principles for frequency-dependent selection {I}: the one-locus two-allele case},
+	volume = {74},
+	issn = {00405809},
+	shorttitle = {Maximization principles for frequency-dependent selection I},
+	doi = {10.1016/j.tpb.2008.07.006},
+	number = {3},
+	urldate = {2020-08-11},
+	journal = {Theoretical Population Biology},
+	author = {Schneider, Kristan A.},
+	month = oct,
+	year = {2008},
+	pages = {251--262}
+}
+
+@article{alvarez2005models,
+  title={Models of general frequency-dependent selection and mating-interaction effects and the analysis of selection patterns in Drosophila inversion polymorphisms},
+  author={{\'A}lvarez-Castro, Jos{\'e} M and Alvarez, Gonzalo},
+  journal={Genetics},
+  volume={170},
+  number={3},
+  pages={1167--1179},
+  year={2005},
+  publisher={Genetics Soc America}
+},
+
+@article{schutz1969inter,
+  title={Inter-Genotypic Competition in Plant Populations {II}. Maintenance of Allelic Polymorphisms with Frequency-Dependent Selection and Mixed Selfing and Random Mating},
+  author={Schutz, WM and Usanis, SA},
+  journal={Genetics},
+  volume={61},
+  number={4},
+  pages={875},
+  year={1969},
+  publisher={Genetics Society of America}
+},
+
+@article{mackay2012drosophila,
+  title={The Drosophila melanogaster genetic reference panel},
+  author={Mackay, Trudy FC and Richards, Stephen and Stone, Eric A and Barbadilla, Antonio and Ayroles, Julien F and Zhu, Dianhui and Casillas, S{\`o}nia and Han, Yi and Magwire, Michael M and Cridland, Julie M and others},
+  journal={Nature},
+  volume={482},
+  number={7384},
+  pages={173--178},
+  year={2012},
+  publisher={Nature Publishing Group}
+},
+
+@article{connell1971role,
+  title={On the role of natural enemies in preventing competitive exclusion in some marine animals and in rain forest trees},
+  author={Connell, Joseph H},
+  journal={Dynamics of Populations},
+  volume={298},
+  pages={312},
+  year={1971}
+},
+
+@article{schmitt1986experimental,
+  title={Experimental studies of the evolutionary significance of sexual reproduction. IV. Effect of neighbor relatedness and aphid infestation on seedling performance},
+  author={Schmitt, Johanna and Antonovics, Janis},
+  journal={Evolution},
+  volume={40},
+  number={4},
+  pages={830--836},
+  year={1986},
+  publisher={Wiley Online Library}
+},
+
+@article{antonovics1984experimental,
+  title={Experimental studies of the evolutionary significance of sexual reproduction. {I}. A test of the frequency-dependent selection hypothesis},
+  author={Antonovics, Janis and Ellstrand, Norman C},
+  journal={Evolution},
+  pages={103--115},
+  year={1984},
+  publisher={JSTOR}
+},
+
+@article{janzen1970herbivores,
+  title={Herbivores and the number of tree species in tropical forests},
+  author={Janzen, Daniel H},
+  journal={The American Naturalist},
+  volume={104},
+  number={940},
+  pages={501--528},
+  year={1970},
+  publisher={University of Chicago Press}
+},
+
+@article{fitzpatrick2007maintaining,
+  title={Maintaining a behaviour polymorphism by frequency-dependent selection on a single gene},
+  author={Fitzpatrick, Mark J and Feder, Elah and Rowe, Locke and Sokolowski, Marla B},
+  journal={Nature},
+  volume={447},
+  number={7141},
+  pages={210--212},
+  year={2007},
+  publisher={Nature Publishing Group}
+},
+
+@article{cosmidis1999rarer,
+  title={Rarer need not be better if commoner is worse: frequency-dependent selection for developmental time at the alcohol dehydrogenase locus of the olive fruit fly, \textit{Bactrocera oleae}},
+  author={Cosmidis, Nikos and Loukas, Michael and Zouros, Eleftherios},
+  journal={Evolution},
+  volume={53},
+  number={2},
+  pages={518--526},
+  year={1999},
+  publisher={Wiley Online Library}
+},
+
+@article{aranzana2005genome,
+  title={Genome-wide association mapping in \textit{Arabidopsis} identifies previously known flowering time and pathogen resistance genes},
+  author={Aranzana, Mar{\'\i}a Jos{\'e} and Kim, Sung and Zhao, Keyan and Bakker, Erica and Horton, Matthew and Jakob, Katrin and Lister, Clare and Molitor, John and Shindo, Chikako and Tang, Chunlao and others},
+  journal={PLoS Genetics},
+  volume={1},
+  number={5},
+  pages={e60},
+  year={2005},
+  publisher={Public Library of Science}
+},
+
+@article{bethke2016pectin,
+  title={Pectin biosynthesis is critical for cell wall integrity and immunity in \textit{Arabidopsis thaliana}},
+  author={Bethke, Gerit and Thao, Amanda and Xiong, Guangyan and Li, Baohua and Soltis, Nicole E and Hatsugai, Noriyuki and Hillmer, Rachel A and Katagiri, Fumiaki and Kliebenstein, Daniel J and Pauly, Markus and others},
+  journal={The Plant Cell},
+  volume={28},
+  number={2},
+  pages={537--556},
+  year={2016},
+  publisher={Am Soc Plant Biol}
+}
+
+@article{cockerham1972frequency,
+  title={Frequency-dependent selection in randomly mating populations},
+  author={Cockerham, C Clark and Burrows, PM and Young, SS and Prout, Timothy},
+  journal={The American Naturalist},
+  volume={106},
+  number={950},
+  pages={493--515},
+  year={1972},
+  publisher={University of Chicago Press}
+}
+
+@article{brunet2000disease,
+  title={Disease, frequency-dependent selection, and genetic polymorphisms: experiments with stripe rust and wheat},
+  author={Brunet, Johanne and Mundt, Christopher C},
+  journal={Evolution},
+  volume={54},
+  number={2},
+  pages={406--415},
+  year={2000},
+  publisher={Wiley Online Library}
+}
+
+@article{zhou2012genome,
+  title={Genome-wide efficient mixed-model analysis for association studies},
+  author={Zhou, Xiang and Stephens, Matthew},
+  journal={Nature Genetics},
+  volume={44},
+  number={7},
+  pages={821--824},
+  year={2012},
+  publisher={Nature Publishing Group}
+},
+
+@article{gilmour1995average,
+  title={Average information REML: an efficient algorithm for variance parameter estimation in linear mixed models},
+  author={Gilmour, Arthur R and Thompson, Robin and Cullis, Brian R},
+  journal={Biometrics},
+  pages={1440--1450},
+  year={1995},
+  publisher={JSTOR}
+},
+
+@article{exposito2020earth,
+  title={The Earth BioGenome project: opportunities and challenges for plant genomics and conservation},
+  author={Exposito-Alonso, Moises and Drost, Hajk-Georg and Burbano, Hern{\'a}n A and Weigel, Detlef},
+  journal={The Plant Journal},
+  volume={102},
+  number={2},
+  pages={222--229},
+  year={2020},
+  publisher={Wiley Online Library}
+},
+
+@book{bishop2006pattern,
+  title={Pattern recognition and machine learning},
+  author={Bishop, Christopher M},
+  year={2006},
+  publisher={springer}
+}
+
+@article{metropolis1953equation,
+  title={Equation of state calculations by fast computing machines},
+  author={Metropolis, Nicholas and Rosenbluth, Arianna W and Rosenbluth, Marshall N and Teller, Augusta H and Teller, Edward},
+  journal={The Journal of Chemical Physics},
+  volume={21},
+  number={6},
+  pages={1087--1092},
+  year={1953},
+  publisher={American Institute of Physics}
+}
+
+@article{hastings1970monte,
+  title={Monte Carlo sampling methods using Markov chains and their applications},
+  author={Hastings, W Keith},
+  year={1970},
+  publisher={Oxford University Press}
+}
+
+@article{kofler2012gowinda,
+  title={Gowinda: unbiased analysis of gene set enrichment for genome-wide association studies},
+  author={Kofler, Robert and Schl{\"o}tterer, Christian},
+  journal={Bioinformatics},
+  volume={28},
+  number={15},
+  pages={2084--2085},
+  year={2012},
+  publisher={Oxford University Press}
+}
+
+@article{lewin2018earth,
+  title={Earth BioGenome Project: Sequencing life for the future of life},
+  author={Lewin, Harris A and Robinson, Gene E and Kress, W John and Baker, William J and Coddington, Jonathan and Crandall, Keith A and Durbin, Richard and Edwards, Scott V and Forest, F{\'e}lix and Gilbert, M Thomas P and others},
+  journal={Proceedings of the National Academy of Sciences USA},
+  volume={115},
+  number={17},
+  pages={4325--4333},
+  year={2018},
+  publisher={National Acad Sciences}
+},
+
+@article{browne2016frequency,
+  title={Frequency-dependent selection for rare genotypes promotes genetic diversity of a tropical palm},
+  author={Browne, Luke and Karubian, Jordan},
+  journal={Ecology Letters},
+  volume={19},
+  number={12},
+  pages={1439--1447},
+  year={2016},
+  publisher={Wiley Online Library}
+},
+
+@article{takahashi2014evolution,
+  title={Evolution of increased phenotypic diversity enhances population performance by reducing sexual harassment in damselflies},
+  author={Takahashi, Yuma and Kagawa, Kotaro and Svensson, Erik I and Kawata, Masakado},
+  journal={Nature Communications},
+  volume={5},
+  number={1},
+  pages={1--7},
+  year={2014},
+  publisher={Nature Publishing Group}
+},
+
+@article{molofsky2001coexistence,
+  title={Coexistence under positive frequency dependence},
+  author={Molofsky, Jane and Bever, James D and Antonovics, Janis},
+  journal={Proceedings of the Royal Society of London. Series B: Biological Sciences},
+  volume={268},
+  number={1464},
+  pages={273--277},
+  year={2001},
+  publisher={The Royal Society}
+},
+
+@article{henderson1959estimation,
+  title={The estimation of environmental and genetic trends from records subject to culling},
+  author={Henderson, Charles R and Kempthorne, Oscar and Searle, Shayle R and Von Krosigk, CM},
+  journal={Biometrics},
+  volume={15},
+  number={2},
+  pages={192--218},
+  year={1959},
+  publisher={JSTOR}
+},
+
+@article{garrido2016effect,
+  title={The effect of frequency-dependent selection on resistance and tolerance to herbivory},
+  author={Garrido, E and Llamas-Guzm{\'a}n, LP and Fornoni, J},
+  journal={Journal of Evolutionary Biology},
+  volume={29},
+  number={3},
+  pages={483--489},
+  year={2016},
+  publisher={Wiley Online Library}
+},
+
+@article{kawagoe2011coexistence,
+  title={Coexistence of trichome variation in a natural plant population: a combined study using ecological and candidate gene approaches},
+  author={Kawagoe, Tetsuhiro and Shimizu, Kentaro K and Kakutani, Tetsuji and Kudoh, Hiroshi},
+  journal={PLoS ONE},
+  volume={6},
+  number={7},
+  pages={e22184},
+  year={2011},
+  publisher={Public Library of Science}
+}
+
+@article{hadfield2010general,
+  title={General quantitative genetic methods for comparative biology: phylogenies, taxonomies and multi-trait models for continuous and categorical characters},
+  author={Hadfield, JD and Nakagawa, S},
+  journal={Journal of Evolutionary Biology},
+  volume={23},
+  number={3},
+  pages={494--508},
+  year={2010},
+  publisher={Wiley Online Library}
+},
+
+@article{cipra1987introduction,
+  title={An introduction to the Ising model},
+  author={Cipra, Barry A},
+  journal={The American Mathematical Monthly},
+  volume={94},
+  number={10},
+  pages={937--959},
+  year={1987},
+  publisher={Taylor \& Francis}
+},
+
+@inproceedings{briest2004ising,
+  title={The Ising model: simple evolutionary algorithms as adaptation schemes},
+  author={Briest, Patrick and Brockhoff, Dimo and Degener, Bastian and Englert, Matthias and Gunia, Christian and Heering, Oliver and Jansen, Thomas and Leifhelm, Michael and Plociennik, Kai and R{\"o}glin, Heiko and others},
+  booktitle={International Conference on Parallel Problem Solving from Nature},
+  pages={31--40},
+  year={2004},
+  organization={Springer}
+},
+
+@article{anderson1991two,
+  title={A two-dimensional genetic algorithm for the Ising problem},
+  author={Anderson, Charles A and Jones, Kathryn F and Ryan, Jennifer},
+  journal={Complex Systems},
+  volume={5},
+  number={3},
+  pages={327--334},
+  year={1991}
+},
+
+@article{prugel1997dynamics,
+  title={The dynamics of a genetic algorithm for simple random {I}sing systems},
+  author={Pr{\"u}gel-Bennett, Adam and Shapiro, Jonathan L},
+  journal={Physica D: Nonlinear Phenomena},
+  volume={104},
+  number={1},
+  pages={75--114},
+  year={1997},
+  publisher={Elsevier}
+},
+
+@Article{R_pROC,
+    title = {p{ROC}: an open-source package for {R} and {S}+ to analyze and compare {ROC} curves},
+    author = {Xavier Robin and Natacha Turck and Alexandre Hainard and Natalia Tiberti and Frederique Lisacek and Jean-Charles Sanchez and Markus Muller},
+    year = {2011},
+    journal = {BMC Bioinformatics},
+    volume = {12},
+    pages = {77}
+},
+
+@article{hatakeyama1998dominance,
+  title={Dominance relationships between S-alleles in self-incompatible \textit{Brassica campestris} L.},
+  author={Hatakeyama, Katsunori and Watanabe, Masao and Takasaki, Takeshi and Ojima, Kunihiko and Hinata, Kokichi},
+  journal={Heredity},
+  volume={80},
+  number={2},
+  pages={241--247},
+  year={1998},
+  publisher={Nature Publishing Group}
+},
+
+@article{bernatzky1994self,
+  title={Self-incompatibility is codominant in intraspecific hybrids of self-compatible and self-incompatible \textit{Lycopersicon peruvianum} and \textit{L. hirsutum} based on protein and DNA marker analysis},
+  author={Bernatzky, Robert and Miller, Deborah D},
+  journal={Sexual Plant Reproduction},
+  volume={7},
+  number={5},
+  pages={297--302},
+  year={1994},
+  publisher={Springer}
+},
+
+@Manual{R_gaston,
+    title = {gaston: Genetic Data Handling (QC, GRM, LD, PCA) \& Linear Mixed Models},
+    author = {Herve Perdry and Claire Dandine-Roulland},
+    year = {2020},
+    note = {{R} package version 1.5.6},
+    url = {https://CRAN.R-project.org/package=gaston}
+},
+
+@article{knaus2017vcfr,
+  title={vcfR: a package to manipulate and visualize variant call format data in R},
+  author={Knaus, Brian J and Gr{\"u}nwald, Niklaus J},
+  journal={Molecular Ecology Resources},
+  volume={17},
+  number={1},
+  pages={44--53},
+  year={2017},
+  publisher={Wiley Online Library}
+},
+
+@Manual{R_citation,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2019},
+    url = {https://www.R-project.org/}
+},
+
+@article{mitchell1987regression,
+  title={Regression analysis of natural selection: statistical inference and biological interpretation},
+  author={Mitchell-Olds, Thomas and Shaw, Ruth G},
+  journal={Evolution},
+  volume={41},
+  number={6},
+  pages={1149--1161},
+  year={1987},
+  publisher={Wiley Online Library}
+},
+
+@article{taylor2017interacting,
+  title={Interacting effects of genetic variation for seed dormancy and flowering time on phenology, life history, and fitness of experimental \textit{Arabidopsis thaliana} populations over multiple generations in the field},
+  author={Taylor, Mark A and Cooper, Martha D and Sellamuthu, Reena and Braun, Peter and Migneault, Andrew and Browning, Alyssa and Perry, Emily and Schmitt, Johanna},
+  journal={New Phytologist},
+  volume={216},
+  number={1},
+  pages={291--302},
+  year={2017},
+  publisher={Wiley Online Library}
+},
+
+@article{kang2008efficient,
+  title={Efficient control of population structure in model organism association mapping},
+  author={Kang, Hyun Min and Zaitlen, Noah A and Wade, Claire M and Kirby, Andrew and Heckerman, David and Daly, Mark J and Eskin, Eleazar},
+  journal={Genetics},
+  volume={178},
+  number={3},
+  pages={1709--1723},
+  year={2008},
+  publisher={Genetics Soc America}
+},
+
+@article{mccauley1998frequency,
+  title={Frequency-dependent fitness in \textit{Silene vulgaris}, a gynodioecious plant},
+  author={McCauley, David E and Brock, Marcus T},
+  journal={Evolution},
+  volume={52},
+  number={1},
+  pages={30--36},
+  year={1998},
+  publisher={Wiley Online Library}
+},
+
+@article{bennington1998field,
+  title={Field tests of density-and frequency-dependent selection in \textit{Erigeron annuus} ({C}ompositae)},
+  author={Bennington, Cynthia C and Stratton, Donald A},
+  journal={American Journal of Botany},
+  volume={85},
+  number={4},
+  pages={540--545},
+  year={1998},
+  publisher={Wiley Online Library}
+},
+
+@article{horton_genome-wide_2012,
+	title = {Genome-wide patterns of genetic variation in worldwide \textit{Arabidopsis thaliana} accessions from the {RegMap} panel},
+	volume = {44},
+	issn = {1061-4036, 1546-1718},
+	doi = {10.1038/ng.1042},
+	number = {2},
+	urldate = {2019-05-23},
+	journal = {Nature Genetics},
+	author = {Horton, Matthew W and Hancock, Angela M and Huang, Yu S and Toomajian, Christopher and Atwell, Susanna and Auton, Adam and Muliyati, N Wayan and Platt, Alexander and Sperone, F Gianluca and Vilhjálmsson, Bjarni J and Nordborg, Magnus and Borevitz, Justin O and Bergelson, Joy},
+	month = jan,
+	year = {2012},
+	pages = {212--216}
+},
+
+@article{alonso-blanco_1135_2016,
+	title = {1,135 Genomes Reveal the Global Pattern of Polymorphism in \textit{Arabidopsis thaliana}},
+	volume = {166},
+	issn = {00928674},
+	doi = {10.1016/j.cell.2016.05.063},
+	number = {2},
+	urldate = {2019-05-22},
+	journal = {Cell},
+	author = {Alonso-Blanco, Carlos and Andrade, Jorge and Becker, Claude and Bemm, Felix and Bergelson, Joy and Borgwardt, Karsten M. and Cao, Jun and Chae, Eunyoung and Dezwaan, Todd M. and Ding, Wei and Ecker, Joseph R. and Exposito-Alonso, Moises and Farlow, Ashley and Fitz, Joffrey and Gan, Xiangchao and Grimm, Dominik G. and Hancock, Angela M. and Henz, Stefan R. and Holm, Svante and Horton, Matthew and Jarsulic, Mike and Kerstetter, Randall A. and Korte, Arthur and Korte, Pamela and Lanz, Christa and Lee, Cheng-Ruei and Meng, Dazhe and Michael, Todd P. and Mott, Richard and Muliyati, Ni Wayan and Nägele, Thomas and Nagler, Matthias and Nizhynska, Viktoria and Nordborg, Magnus and Novikova, Polina Yu. and Picó, F. Xavier and Platzer, Alexander and Rabanal, Fernando A. and Rodriguez, Alex and Rowan, Beth A. and Salomé, Patrice A. and Schmid, Karl J. and Schmitz, Robert J. and Seren, Ümit and Sperone, Felice Gianluca and Sudkamp, Mitchell and Svardal, Hannes and Tanzer, Matt M. and Todd, Donald and Volchenboum, Samuel L. and Wang, Congmao and Wang, George and Wang, Xi and Weckwerth, Wolfram and Weigel, Detlef and Zhou, Xuefeng},
+	month = jul,
+	year = {2016},
+	pages = {481--491}
+}
+
+@article{chong2018note,
+  title={A note on measuring natural selection on principal component scores},
+  author={Chong, Veronica K and Fung, Hannah F and Stinchcombe, John R},
+  journal={Evolution Letters},
+  volume={2},
+  number={4},
+  pages={272--280},
+  year={2018},
+  publisher={Wiley Online Library}
+},
+
+@article{shimizu2002ecology,
+  title={Ecology meets molecular genetics in \textit{Arabidopsis}},
+  author={Shimizu, Kentaro K},
+  journal={Population Ecology},
+  volume={44},
+  number={3},
+  pages={0221--0233},
+  year={2002},
+  publisher={Springer}
+},
+
+@article{siewert_betascan2:_2020,
+	title = {{BetaScan2:} Standardized Statistics to Detect Balancing Selection Utilizing Substitution Data},
+	volume = {12},
+	issn = {1759-6653},
+	shorttitle = {{BetaScan2}},
+	doi = {10.1093/gbe/evaa013},
+	number = {2},
+	urldate = {2020-07-29},
+	journal = {Genome Biology and Evolution},
+	author = {Siewert, Katherine M and Voight, Benjamin F},
+	editor = {Katz, Laura A},
+	month = feb,
+	year = {2020},
+	pages = {3873--3877}
+},
+
+@article{siewert_detecting_2017,
+	title = {Detecting Long-Term Balancing Selection Using Allele Frequency Correlation},
+	volume = {34},
+	issn = {0737-4038, 1537-1719},
+	doi = {10.1093/molbev/msx209},
+	number = {11},
+	urldate = {2019-10-04},
+	journal = {Molecular Biology and Evolution},
+	author = {Siewert, Katherine M. and Voight, Benjamin F.},
+	month = nov,
+	year = {2017},
+	pages = {2996--3005}
+},
+
+@article{togninalli_aragwas_2018,
+	title = {The {AraGWAS} Catalog: a curated and standardized \textit{Arabidopsis thaliana} {GWAS} catalog},
+	volume = {46},
+	issn = {0305-1048, 1362-4962},
+	shorttitle = {The {AraGWAS} Catalog},
+	doi = {10.1093/nar/gkx954},
+	number = {D1},
+	urldate = {2019-07-12},
+	journal = {Nucleic Acids Research},
+	author = {Togninalli, Matteo and Seren, Ümit and Meng, Dazhe and Fitz, Joffrey and Nordborg, Magnus and Weigel, Detlef and Borgwardt, Karsten and Korte, Arthur and Grimm, Dominik G},
+	month = jan,
+	year = {2018},
+	pages = {D1150--D1156}
+},
+
+@article{chouteau_warning_2016,
+	title = {Warning signals are under positive frequency-dependent selection in nature},
+	volume = {113},
+	issn = {0027-8424, 1091-6490},
+	doi = {10.1073/pnas.1519216113},
+	number = {8},
+	urldate = {2020-08-01},
+	journal = {Proceedings of the National Academy of Sciences USA},
+	author = {Chouteau, Mathieu and Arias, Mónica and Joron, Mathieu},
+	month = feb,
+	year = {2016},
+	pages = {2164--2169},
+
+},
+
+@article{sato2017herbivore,
+  title={Herbivore-mediated interaction promotes the maintenance of trichome dimorphism through negative frequency-dependent selection},
+  author={Sato, Yasuhiro and Kudoh, Hiroshi},
+  journal={The American Naturalist},
+  volume={190},
+  number={3},
+  pages={E67--E77},
+  year={2017},
+  publisher={University of Chicago Press Chicago, IL}
+},
+
+@article{hedrick2007balancing,
+  title={Balancing selection},
+  author={Hedrick, Philip W},
+  journal={Current Biology},
+  volume={17},
+  number={7},
+  pages={R230--R231},
+  year={2007},
+  publisher={Elsevier}
+},
+
+@article{lande1983measurement,
+  title={The measurement of selection on correlated characters},
+  author={Lande, Russell and Arnold, Stevan J},
+  journal={Evolution},
+  pages={1210--1226},
+  volume={37},
+  number={6},
+  year={1983},
+  publisher={JSTOR}
+},
+
+@article{gigord2001negative,
+  title={Negative frequency-dependent selection maintains a dramatic flower color polymorphism in the rewardless orchid \textit{Dactylorhiza sambucina} (L.) Soo},
+  author={Gigord, Luc DB and Macnair, Mark R and Smithson, Ann},
+  journal={Proceedings of the National Academy of Sciences USA},
+  volume={98},
+  number={11},
+  pages={6253--6255},
+  year={2001},
+  publisher={National Acad Sciences}
+},
+
+@article{takahashi2010negative,
+  title={Negative frequency-dependent selection in female color polymorphism of a damselfly},
+  author={Takahashi, Yuma and Yoshimura, Jin and Morita, Satoru and Watanabe, Mamoru},
+  journal={Evolution},
+  volume={64},
+  number={12},
+  pages={3620--3628},
+  year={2010},
+  publisher={Wiley Online Library}
+},
+
+@article{nosil2018natural,
+  title={Natural selection and the predictability of evolution in \textit{Timema} stick insects},
+  author={Nosil, Patrik and Villoutreix, Romain and de Carvalho, Clarissa F and Farkas, Timothy E and Soria-Carrasco, V{\'\i}ctor and Feder, Jeffrey L and Crespi, Bernard J and Gompert, Zach},
+  journal={Science},
+  volume={359},
+  number={6377},
+  pages={765--770},
+  year={2018},
+  publisher={American Association for the Advancement of Science}
+},
+
+@article{borer2010positive,
+  title={Positive frequency-dependent selection on warning color in alpine leaf beetles},
+  author={Borer, Matthias and Van Noort, Tom and Rahier, Martine and Naisbit, Russell E},
+  journal={Evolution},
+  volume={64},
+  number={12},
+  pages={3629--3633},
+  year={2010},
+  publisher={Wiley Online Library}
+},
+
+@article{joly2011migration,
+  title={Migration rates, frequency-dependent selection and the self-incompatibility locus in \textit{Leavenworthia} ({B}rassicaceae)},
+  author={Joly, Simon and Schoen, Daniel J},
+  journal={Evolution},
+  volume={65},
+  number={8},
+  pages={2357--2369},
+  year={2011},
+  publisher={Wiley Online Library}
+},
+
+@article{llaurens2008does,
+  title={Does frequency-dependent selection with complex dominance interactions accurately predict allelic frequencies at the self-incompatibility locus in \textit{Arabidopsis halleri}?},
+  author={Llaurens, Violane and Billiard, Sylvain and Leducq, Jean-Baptiste and Castric, Vincent and Klein, Etienne Karl and Vekemans, Xavier},
+  journal={Evolution},
+  volume={62},
+  number={10},
+  pages={2545--2557},
+  year={2008},
+  publisher={Wiley Online Library}
+},
+
+@article{fisher_genetic_2016,
+	title = {The genetic basis and fitness consequences of sperm midpiece size in deer mice},
+	volume = {7},
+	issn = {2041-1723},
+	doi = {10.1038/ncomms13652},
+	number = {1},
+	urldate = {2020-08-01},
+	journal = {Nature Communications},
+	author = {Fisher, Heidi S. and Jacobs-Palmer, Emily and Lassance, Jean-Marc and Hoekstra, Hopi E.},
+	month = dec,
+	year = {2016}
+},
+
+@article{webster_population_2019,
+	title = {Population Selection and Sequencing of \textit{Caenorhabditis elegans} Wild Isolates Identifies a Region on Chromosome {III} Affecting Starvation Resistance},
+	volume = {9},
+	issn = {2160-1836},
+	doi = {10.1534/g3.119.400617},
+	number = {10},
+	urldate = {2020-08-01},
+	journal = {G3; Genes{\textbar}Genomes{\textbar}Genetics},
+	author = {Webster, Amy K. and Hung, Anthony and Moore, Brad T. and Guzman, Ryan and Jordan, James M. and Kaplan, Rebecca E. W. and Hibshman, Jonathan D. and Tanny, Robyn E. and Cook, Daniel E. and Andersen, Erik and Baugh, L. Ryan},
+	month = oct,
+	year = {2019},
+	pages = {3477--3488}
+},
+
+@article{haller_slim_2019,
+	title = {{SLiM} 3: Forward Genetic Simulations Beyond the {Wright–Fisher} Model},
+	volume = {36},
+	issn = {0737-4038, 1537-1719},
+	shorttitle = {{SLiM} 3},
+	doi = {10.1093/molbev/msy228},
+	number = {3},
+	urldate = {2020-07-16},
+	journal = {Molecular Biology and Evolution},
+	author = {Haller, Benjamin C and Messer, Philipp W},
+	editor = {Hernandez, Ryan},
+	month = mar,
+	year = {2019},
+	pages = {632--637}
+},
+
+@article{prasad_gain--function_2012,
+	title = {A Gain-of-Function Polymorphism Controlling Complex Traits and Fitness in Nature},
+	volume = {337},
+	issn = {0036-8075, 1095-9203},
+	doi = {10.1126/science.1221636},
+	number = {6098},
+	urldate = {2020-08-03},
+	journal = {Science},
+	author = {Prasad, K. V. S. K. and Song, B.-H. and Olson-Manning, C. and Anderson, J. T. and Lee, C.-R. and Schranz, M. E. and Windsor, A. J. and Clauss, M. J. and Manzaneda, A. J. and Naqvi, I. and Reichelt, M. and Gershenzon, J. and Rupasinghe, S. G. and Schuler, M. A. and Mitchell-Olds, T.},
+	month = aug,
+	year = {2012},
+	pages = {1081--1084}
+},
+
+@article{durham_genome-wide_2014,
+	title = {Genome-wide analysis in \textit{Drosophila} reveals age-specific effects of {SNPs} on fitness traits},
+	volume = {5},
+	issn = {2041-1723},
+	doi = {10.1038/ncomms5338},
+	number = {1},
+	urldate = {2020-08-03},
+	journal = {Nature Communications},
+	author = {Durham, Mary F. and Magwire, Michael M. and Stone, Eric A. and Leips, Jeff},
+	month = jul,
+	year = {2014}
+},
+
+@article{flatt_life-history_2020,
+	title = {Life-History Evolution and the Genetics of Fitness Components in \textit{Drosophila melanogaster}},
+	volume = {214},
+	issn = {0016-6731, 1943-2631},
+	doi = {10.1534/genetics.119.300160},
+	number = {1},
+	urldate = {2020-08-03},
+	journal = {Genetics},
+	author = {Flatt, Thomas},
+	month = jan,
+	year = {2020},
+	pages = {3--48}
+},
+
+@article{lively2000parasite,
+  title={Parasite adaptation to locally common host genotypes},
+  author={Lively, Curtis M and Dybdahl, Mark F},
+  journal={Nature},
+  volume={405},
+  number={6787},
+  pages={679--681},
+  year={2000},
+  publisher={Nature Publishing Group}
+},
+
+@article{goldberg2020herbivore,
+  title={Herbivore-mediated negative frequency-dependent selection underlies a trichome dimorphism in nature},
+  author={Goldberg, Jay K and Lively, Curtis M and Sternlieb, Sonya R and Pintel, Genevieve and Hare, J Daniel and Morrissey, Michael B and Delph, Lynda F},
+  journal={Evolution Letters},
+  volume={4},
+  number={1},
+  pages={83--90},
+  year={2020},
+  publisher={Wiley Online Library}
+},
+
+@article{exposito2019natural,
+  title={Natural selection on the \textit{Arabidopsis thaliana} genome in present and future climates},
+  author={Exposito-Alonso, Moises and Burbano, Hern{\'a}n A and Bossdorf, Oliver and Nielsen, Rasmus and Weigel, Detlef},
+  journal={Nature},
+  volume={573},
+  number={7772},
+  pages={126--129},
+  year={2019},
+  publisher={Nature Publishing Group}
+},
+
+@incollection{broman2009single,
+  title={Single-{QTL} analysis},
+  author={Broman, Karl W and Sen, {\'S}aunak},
+  booktitle={A Guide to QTL Mapping with R/qtl},
+  pages={75--133},
+  year={2009},
+  publisher={Springer}
+},
+
+@book{gondro2013genome,
+  title={Genome-wide association studies and genomic prediction},
+  author={Gondro, Cedric and Van der Werf, Julius and Hayes, Ben},
+  year={2013},
+  publisher={Humana Press}
+},
+
+@article{sato2019plant,
+  title={Plant trichomes and a single gene \textit{{GLABRA1}} contribute to insect community composition on field-grown \textit{Arabidopsis thaliana}},
+  author={Sato, Yasuhiro and Shimizu-Inatsugi, Rie and Yamazaki, Misako and Shimizu, Kentaro K and Nagano, Atsushi J},
+  journal={BMC Plant Biology},
+  volume={19},
+  number={1},
+  pages={163},
+  year={2019},
+  publisher={Springer}
+},
+
+@article{tsuchimatsu2020adaptive,
+  title={Adaptive reduction of male gamete number in the selfing plant \textit{Arabidopsis thaliana}},
+  author={Tsuchimatsu, Takashi and Kakui, Hiroyuki and Yamazaki, Misako and Marona, Cindy and Tsutsui, Hiroki and Hedhly, Afif and Meng, Dazhe and Sato, Yutaka and St{\"a}dler, Thomas and Grossniklaus, Ueli and others},
+  journal={Nature Communications},
+  volume={11},
+  number={1},
+  pages={1--9},
+  year={2020},
+  publisher={Nature Publishing Group}
+},
+
+@article{sato2020neighbor,
+  title={Neighbor {QTL}: an interval mapping method for quantitative trait loci underlying neighbor effects},
+  author={Sato, Yasuhiro and Takeda, Kazuya and Nagano, Atsushi J},
+  journal={G3; Genes{\textbar}Genomes{\textbar}Genetics},
+  volume={11},
+  number={2},
+  pages={jkab017},
+  doi={10.1093/g3journal/jkab017},
+  year={2021},
+  publisher={Oxford University Press}
+},
+
+@article{sato2019neighbor,
+  title={Neighbor {GWAS}: incorporating neighbor genotypic identity into genome-wide association studies of field herbivory},
+  author={Sato, Yasuhiro and Yamamoto, Eiji and Shimizu, Kentaro K and Nagano, Atsushi J},
+  journal={Heredity},
+  volume={126},
+  number={4},
+  pages={597--614},
+  doi={10.1038/s41437-020-00401-w},
+  year={2021},
+  publisher={Springer Nature}
+},
+
+@ARTICLE{article-minimal,
+   author = {L[eslie] A. Aamport},
+   title = {The Gnats and Gnus Document Preparation System},
+   journal = {\mbox{G-Animal's} Journal},
+   year = 1986,
+}
+
+@ARTICLE{article-full,
+   author = {L[eslie] A. Aamport},
+   title = {The Gnats and Gnus Document Preparation System},
+   journal = {\mbox{G-Animal's} Journal},
+   year = 1986,
+   volume = 41,
+   number = 7,
+   pages = "73+",
+   month = jul,
+   note = "This is a full ARTICLE entry",
+}
+
+The KEY field is here to override the KEY field in the journal being
+cross referenced (so is the NOTE field, in addition to its imparting
+information).
+
+@ARTICLE{article-crossref,
+   crossref = {WHOLE-JOURNAL},
+   key = "",
+   author = {L[eslie] A. Aamport},
+   title = {The Gnats and Gnus Document Preparation System},
+   pages = "73+",
+   note = "This is a cross-referencing ARTICLE entry",
+}
+
+@ARTICLE{whole-journal,
+   key = "GAJ",
+   journal = {\mbox{G-Animal's} Journal},
+   year = 1986,
+   volume = 41,
+   number = 7,
+   month = jul,
+   note = {The entire issue is devoted to gnats and gnus
+                (this entry is a cross-referenced ARTICLE (journal))},
+}
+
+@INBOOK{inbook-minimal,
+   author = "Donald E. Knuth",
+   title = "Fundamental Algorithms",
+   publisher = "Addison-Wesley",
+   year = "{\noopsort{1973b}}1973",
+   chapter = "1.2",
+}
+
+@INBOOK{bishop2006_11,
+   author = "Christopher M. Bishop",
+   title = "Pattern Recognition and Machine Learning",
+   publisher = "Springer-Verlag",
+   year = "2006",
+   pages = "pp. 523--558",
+   chapter = "11: Sampling Methods",
+}
+
+@INBOOK{inbook-full,
+   author = "Donald E. Knuth",
+   title = "Fundamental Algorithms",
+   volume = 1,
+   series = "The Art of Computer Programming",
+   publisher = "Addison-Wesley",
+   address = "Reading, Massachusetts",
+   edition = "Second",
+   month = "10~" # jan,
+   year = "{\noopsort{1973b}}1973",
+   type = "Section",
+   chapter = "1.2",
+   pages = "10--119",
+   note = "This is a full INBOOK entry",
+}
+
+@INBOOK{inbook-crossref,
+   crossref = "whole-set",
+   title = "Fundamental Algorithms",
+   volume = 1,
+   series = "The Art of Computer Programming",
+   edition = "Second",
+   year = "{\noopsort{1973b}}1973",
+   type = "Section",
+   chapter = "1.2",
+   note = "This is a cross-referencing INBOOK entry",
+}
+
+@BOOK{book-minimal,
+   author = "Donald E. Knuth",
+   title = "Seminumerical Algorithms",
+   publisher = "Addison-Wesley",
+   year = "{\noopsort{1973c}}1981",
+}
+
+@BOOK{book-full,
+   author = "Donald E. Knuth",
+   title = "Seminumerical Algorithms",
+   volume = 2,
+   series = "The Art of Computer Programming",
+   publisher = "Addison-Wesley",
+   address = "Reading, Massachusetts",
+   edition = "Second",
+   month = "10~" # jan,
+   year = "{\noopsort{1973c}}1981",
+   note = "This is a full BOOK entry",
+}
+
+@BOOK{book-crossref,
+   crossref = "whole-set",
+   title = "Seminumerical Algorithms",
+   volume = 2,
+   series = "The Art of Computer Programming",
+   edition = "Second",
+   year = "{\noopsort{1973c}}1981",
+   note = "This is a cross-referencing BOOK entry",
+}
+
+@BOOK{whole-set,
+   author = "Donald E. Knuth",
+   publisher = "Addison-Wesley",
+   title = "The Art of Computer Programming",
+   series = "Four volumes",
+   year = "{\noopsort{1973a}}{\switchargs{--90}{1968}}",
+   note = "Seven volumes planned (this is a cross-referenced set of BOOKs)",
+}
+
+@BOOKLET{booklet-minimal,
+   key = "Kn{\printfirst{v}{1987}}",
+   title = "The Programming of Computer Art",
+}
+
+@BOOKLET{booklet-full,
+   author = "Jill C. Knvth",
+   title = "The Programming of Computer Art",
+   howpublished = "Vernier Art Center",
+   address = "Stanford, California",
+   month = feb,
+   year = 1988,
+   note = "This is a full BOOKLET entry",
+}
+
+@INCOLLECTION{incollection-minimal,
+   author = "Daniel D. Lincoll",
+   title = "Semigroups of Recurrences",
+   booktitle = "High Speed Computer and Algorithm Organization",
+   publisher = "Academic Press",
+   year = 1977,
+}
+
+@INCOLLECTION{incollection-full,
+   author = "Daniel D. Lincoll",
+   title = "Semigroups of Recurrences",
+   editor = "David J. Lipcoll and D. H. Lawrie and A. H. Sameh",
+   booktitle = "High Speed Computer and Algorithm Organization",
+   number = 23,
+   series = "Fast Computers",
+   chapter = 3,
+   type = "Part",
+   pages = "179--183",
+   publisher = "Academic Press",
+   address = "New York",
+   edition = "Third",
+   month = sep,
+   year = 1977,
+   note = "This is a full INCOLLECTION entry",
+}
+
+@INCOLLECTION{incollection-crossref,
+   crossref = "whole-collection",
+   author = "Daniel D. Lincoll",
+   title = "Semigroups of Recurrences",
+   pages = "179--183",
+   note = "This is a cross-referencing INCOLLECTION entry",
+}
+
+@BOOK{whole-collection,
+   editor = "David J. Lipcoll and D. H. Lawrie and A. H. Sameh",
+   title = "High Speed Computer and Algorithm Organization",
+   booktitle = "High Speed Computer and Algorithm Organization",
+   number = 23,
+   series = "Fast Computers",
+   publisher = "Academic Press",
+   address = "New York",
+   edition = "Third",
+   month = sep,
+   year = 1977,
+   note = "This is a cross-referenced BOOK (collection) entry",
+}
+
+@MANUAL{manual-minimal,
+   key = "Manmaker",
+   title = "The Definitive Computer Manual",
+}
+
+@MANUAL{manual-full,
+   author = "Larry Manmaker",
+   title = "The Definitive Computer Manual",
+   organization = "Chips-R-Us",
+   address = "Silicon Valley",
+   edition = "Silver",
+   month = apr # "-" # may,
+   year = 1986,
+   note = "This is a full MANUAL entry",
+}
+
+@MASTERSTHESIS{mastersthesis-minimal,
+   author = "{\'{E}}douard Masterly",
+   title = "Mastering Thesis Writing",
+   school = "Stanford University",
+   year = 1988,
+}
+
+@MASTERSTHESIS{mastersthesis-full,
+   author = "{\'{E}}douard Masterly",
+   title = "Mastering Thesis Writing",
+   school = "Stanford University",
+   type = "Master's project",
+   address = "English Department",
+   month = jun # "-" # aug,
+   year = 1988,
+   note = "This is a full MASTERSTHESIS entry",
+}
+
+@MISC{misc-minimal,
+   key = "Missilany",
+   note = "This is a minimal MISC entry",
+}
+
+@MISC{misc-full,
+   author = "Joe-Bob Missilany",
+   title = "Handing out random pamphlets in airports",
+   howpublished = "Handed out at O'Hare",
+   month = oct,
+   year = 1984,
+   note = "This is a full MISC entry",
+}
+
+@STRING{STOC-key = "OX{\singleletter{stoc}}"}
+
+@STRING{ACM = "The OX Association for Computing Machinery"}
+
+@STRING{STOC = " Symposium on the Theory of Computing"}
+
+@INPROCEEDINGS{inproceedings-minimal,
+   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
+   title = "On Notions of Information Transfer in {VLSI} Circuits",
+   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
+   year = 1983,
+}
+
+@INPROCEEDINGS{inproceedings-full,
+   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
+   title = "On Notions of Information Transfer in {VLSI} Circuits",
+   editor = "Wizard V. Oz and Mihalis Yannakakis",
+   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
+   number = 17,
+   series = "All ACM Conferences",
+   pages = "133--139",
+   month = mar,
+   year = 1983,
+   address = "Boston",
+   organization = ACM,
+   publisher = "Academic Press",
+   note = "This is a full INPROCEDINGS entry",
+}
+
+@INPROCEEDINGS{inproceedings-crossref,
+   crossref = "whole-proceedings",
+   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
+   title = "On Notions of Information Transfer in {VLSI} Circuits",
+   organization = "",
+   pages = "133--139",
+   note = "This is a cross-referencing INPROCEEDINGS entry",
+}
+
+@PROCEEDINGS{proceedings-minimal,
+   key = STOC-key,
+   title = "Proc. Fifteenth Annual" # STOC,
+   year = 1983,
+}
+
+@PROCEEDINGS{proceedings-full,
+   editor = "Wizard V. Oz and Mihalis Yannakakis",
+   title = "Proc. Fifteenth Annual" # STOC,
+   number = 17,
+   series = "All ACM Conferences",
+   month = mar,
+   year = 1983,
+   address = "Boston",
+   organization = ACM,
+   publisher = "Academic Press",
+   note = "This is a full PROCEEDINGS entry",
+}
+
+@PROCEEDINGS{whole-proceedings,
+   key = STOC-key,
+   organization = ACM,
+   title = "Proc. Fifteenth Annual" # STOC,
+   address = "Boston",
+   year = 1983,
+   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
+   note = "This is a cross-referenced PROCEEDINGS",
+}
+
+@PHDTHESIS{phdthesis-minimal,
+   author = "F. Phidias Phony-Baloney",
+   title = "Fighting Fire with Fire: Festooning {F}rench Phrases",
+   school = "Fanstord University",
+   year = 1988,
+}
+
+@PHDTHESIS{phdthesis-full,
+   author = "F. Phidias Phony-Baloney",
+   title = "Fighting Fire with Fire: Festooning {F}rench Phrases",
+   school = "Fanstord University",
+   type = "{PhD} Dissertation",
+   address = "Department of French",
+   month = jun # "-" # aug,
+   year = 1988,
+   note = "This is a full PHDTHESIS entry",
+}
+
+@TECHREPORT{techreport-minimal,
+   author = "Tom Terrific",
+   title = "An {$O(n \log n / \! \log\log n)$} Sorting Algorithm",
+   institution = "Fanstord University",
+   year = 1988,
+}
+
+@TECHREPORT{techreport-full,
+   author = "Tom T{\'{e}}rrific",
+   title = "An {$O(n \log n / \! \log\log n)$} Sorting Algorithm",
+   institution = "Fanstord University",
+   type = "Wishful Research Result",
+   number = "7",
+   address = "Computer Science Department, Fanstord, California",
+   month = oct,
+   year = 1988,
+   note = "This is a full TECHREPORT entry",
+}
+
+@UNPUBLISHED{unpublished-minimal,
+   author = "Ulrich {\"{U}}nderwood and Ned {\~N}et and Paul {\={P}}ot",
+   title = "Lower Bounds for Wishful Research Results",
+   note = "Talk at Fanstord University (this is a minimal UNPUBLISHED entry)",
+}
+
+@UNPUBLISHED{unpublished-full,
+   author = "Ulrich {\"{U}}nderwood and Ned {\~N}et and Paul {\={P}}ot",
+   title = "Lower Bounds for Wishful Research Results",
+   month = nov # ", " # dec,
+   year = 1988,
+   note = "Talk at Fanstord University (this is a full UNPUBLISHED entry)",
+}
+
+@MISC{random-note-crossref,
+   key = {Volume-2},
+   note = "Volume~2 is listed under Knuth \cite{book-full}"
+}

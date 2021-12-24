@@ -10,4 +10,4 @@ Source code and/or input data for empirical analyses on *Arabidopsis halleri*, *
 Source code for simulations, numerical examples, and their figure presentation.  
 
 ### overleaf
-Overleaf manuscript made from LaTex template  
+Overleaf manuscript made from LaTeX template  

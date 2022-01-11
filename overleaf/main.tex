@@ -69,10 +69,8 @@
 \affil[2]{Research Institute for Food and Agriculture, Ryukoku University, Yokotani 1-5, Seta Oe-cho, Otsu, Shiga 520-2194, Japan}
 \author[3]{Yuma Takahashi}
 \affil[3]{Graduate School of Science, Chiba University, Yayoi-cho 1-33, Inage-ku, Chiba 263-8522, Japan}
-\author[4]{...}
-\affil[4]{...}
-\author[1,5]{Kentaro K. Shimizu}
-\affil[5]{Kihara Institute for Biological Research, Yokohama City University, Maioka 641-12, Totsuka-ward, Yokohama 244-0813, Japan}
+\author[1,4]{Kentaro K. Shimizu}
+\affil[4]{Kihara Institute for Biological Research, Yokohama City University, Maioka 641-12, Totsuka-ward, Yokohama 244-0813, Japan}
 
 \date{\today}
 
@@ -112,7 +110,7 @@ The purpose of this study was to develop a genetic marker regression method that
 \section{Methods}
 
 \subsection{Model}
-We developed a statistical method linking FDS, the Ising problem, and a pairwise interaction model. First, we modeled pairwise interactions based on the forward Ising problem. Then, we proposed a linear regression as an inverse Ising problem. Finally, we examined fitness functions in a panmictic population to show how regression coefficients infer negative or positive FDS.
+We developed a statistical method linking FDS, the Ising model, and a pairwise interaction model. First, we modeled pairwise interactions based on the forward Ising problem. Then, we proposed a linear regression as an inverse Ising problem. Finally, we examined fitness functions in a panmictic population to show how regression coefficients infer negative or positive FDS.
 
 \subsubsection{Pairwise interactions based on the Ising model}
 To model pairwise interactions between genotypes, we focused on the Ising model of ferromagnetics. Let us assume that diploid organisms interact within panmictic subpopulations and produce their offspring based on the realized fitness (Fig. \ref{fig1:scheme}a). We assume that a subpopulation $k$ belongs to the meta-population $K$ as $k \in K$, where two individuals $i$ and $j$ belong to subpopulation $k$ such that $i,j \in k$. We further assumed that individuals $i$ and $j$ had two alleles at a locus, with the ancestral allele A dominant over the derived allele a, where the genotype values were encoded as $g_{i(j)} \in$ \{AA, Aa, aa\} $=$ \{+1, +1, -1\}. This dominant encoding represented well-reported cases in which FDS often acts on a trait exhibiting dimorphism with complete dominance \citep[for example,][]{takahashi2010negative,sato2017herbivore}. By incorporating the genotype similarity between $i$ and $j$, we designated fitness $w$ for individual $i$ as:
@@ -146,8 +144,8 @@ where $\beta_{12}$ indicates the coefficient for the asymmetric effects of genot
 \subsubsection{Fitness functions with respect to regression coefficients}
 To clarify how the coefficients for genotype similarity effects $\beta_2$ and asymmetric effects $\beta_{12}$ corresponded to FDS, we finally analyzed Equation (2.2) as a function of allele frequencies. If all individuals uniformly interacted in a sufficiently large population with random mating (i.e., $N_k \to \infty$), the likelihood of one genotype interacting with the other genotypes depend on genotype frequencies derived from an allele frequency within a population (Appendix S3). Let $f$ be the frequency of the A allele within the panmictic infinite population. The ratio of genotype frequency on panmixia was as follows: AA: Aa: aa = $f^2:2f(1-f):(1-f)^2$. Assuming the complete dominance of the A allele over the a allele ($x_{i(j)} \in$ \{AA, Aa, aa\} $=$ \{+1, +1, -1\}), we calculated all the combinations among the three genotypes (Table \ref{tableS2:intTable}) and consequent fitness $y_i$ for AA, Aa, and aa genotypes as
 
-$$y_\mathrm{AA} = y_\mathrm{Aa} = \beta_0 + \beta_2 f^2 + \beta_2 2f(1-f) - \beta_2(1-f)^2 + \beta_{12}f^2 + \beta_{12}2f(1-f) - \beta_{12}(1-f)^2~~~\mathrm{(3.1a)}$$
-$$y_\mathrm{aa} = \beta_0 - \beta_2 f^2 - \beta_2 2f(1-f) + \beta_2(1-f)^2 + \beta_{12}f^2 + \beta_{12}2f(1-f) - \beta_{12}(1-f)^2~~~\mathrm{(3.1b)}$$
+$$y_\mathrm{AA} = y_\mathrm{Aa} = \beta_0 + \beta_2 f^2 + 2\beta_2 f(1-f) - \beta_2(1-f)^2 + \beta_{12}f^2 + 2\beta_{12}f(1-f) - \beta_{12}(1-f)^2~~~\mathrm{(3.1a)}$$
+$$y_\mathrm{aa} = \beta_0 - \beta_2 f^2 - 2\beta_2 f(1-f) + \beta_2(1-f)^2 + \beta_{12}f^2 + 2\beta_{12}f(1-f) - \beta_{12}(1-f)^2~~~\mathrm{(3.1b)}$$
 where $y_\mathrm{AA}$, $y_\mathrm{Aa}$, and $y_\mathrm{aa}$ denote the fitness values for the AA, Aa, and aa genotypes, respectively (Appendix S3). The allele-level marginal fitness was then defined by weighting the genotype fitness with the allele frequency as follows:
 
 $$y_\mathrm{A} = f y_\mathrm{AA} + (1 - f) y_\mathrm{Aa}~~~\mathrm{(3.2a)}$$
@@ -298,10 +296,10 @@ Pairwise interaction models have been extensively analyzed in relation to one lo
 The present simulation and application offer an effective way to infer FDS in genetic association studies of fitness components. Our phenotype-driven approach can distinguish between positive and negative FDS based on direct observations of fitness. In molecular population genetics, phenotype-free methods are available to detect signatures of past balancing selection \citep{siewert_detecting_2017}. While fitness measurements are labor-intensive, selection gradient analysis has an advantage in quantifying ongoing FDS. Now that genome information is accumulating in wild organisms \citep{lewin2018earth}, organismal biologists may utilize genome data for a deeper understanding of the maintenance of polymorphism. A joint approach using genomics and fitness evaluation would enable future studies to unveil FDS throughout the genome.
 
 \section*{Acknowledgments}
-The authors thank all members of the Shimizu group for their help with the setup of the \textit{A. thaliana} experiment; H. Kudoh for discussions during the \textit{A. halleri} study; S. Wuest and G. Montazeaud for discussions and comments on the earlier draft, and ... This study was supported by the Japan Society for the Promotion of Science (JSPS) KAKENHI (Grant No. 20K15880) and Japan Science and Technology Agency (JST) PRESTO (JPMJPR17Q4) grants to Y.S. and Swiss National Science Foundation (31003A\_182318) and JST CREST (JPMJCR16O3) grants to K.K.S. The field GWAS was supported by the University of Zurich via the University Research Priority Program for "Global Change and Biodiversity.” The authors declare no conflict of interest.
+The authors thank M. Yamazaki and all members of the Shimizu group for their help with the setup of the \textit{A. thaliana} experiment; H. Kudoh for discussions during the \textit{A. halleri} study; J. Bascompte and S.E. Wuest for comments on the draft. This study was supported by the Japan Society for the Promotion of Science (JSPS) KAKENHI (Grant No. 20K15880) and Japan Science and Technology Agency (JST) PRESTO (JPMJPR17Q4) grants to Y.S. and Swiss National Science Foundation (31003A\_182318) and JST CREST (JPMJCR16O3) grants to K.K.S. The fieldwork at Zurich was supported by the University of Zurich via the University Research Priority Program for "Global Change and Biodiversity.” The authors declare no conflict of interest.
 
 \section*{Data Availability Statement}
-The present regression methods were implemented using the rNeighborGWAS package (\url{https://cran.r-project.org/package=rNeighborGWAS}). The SLiM and R source codes are available in the GitHub repository (\url{https://github.com/yassato/RegressionFDS}). The original data on \textit{A. halleri} are available from the Dryad repository (\url{https://doi.org/10.5061/dryad.53k2d}). The original data on \textit{I. elegans} are available from Y. Takahashi upon request. The branch number data generated in this study are included in Table S3.
+The source codes and original data generated by this study are available in the GitHub repository (\url{https://github.com/yassato/RegressionFDS}).
 
 \renewcommand\refname{References}
 % This is the default "example" bibtex file which ships with the distribution. Be sure to

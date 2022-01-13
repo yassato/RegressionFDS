@@ -64,12 +64,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{\textbf{Detecting frequency-dependent selection using a genetic marker regression of fitness components}}
-\author[1,2]{Yasuhiro Sato}
+\author[1,2]{Yasuhiro Sato\thanks{Co-correspondence: yasuhiro.sato@uzh.ch}}
 \affil[1]{Department of Evolutionary Biology and Environmental Studies, University of Zurich, Winterthurerstrasse 190, 8057 Zurich, Switzerland}
 \affil[2]{Research Institute for Food and Agriculture, Ryukoku University, Yokotani 1-5, Seta Oe-cho, Otsu, Shiga 520-2194, Japan}
 \author[3]{Yuma Takahashi}
 \affil[3]{Graduate School of Science, Chiba University, Yayoi-cho 1-33, Inage-ku, Chiba 263-8522, Japan}
-\author[1,4]{Kentaro K. Shimizu}
+\author[1]{Chongmeng Xu}
+\author[1,4]{Kentaro K. Shimizu\thanks{Co-correspondence: kentaro.shimizu@ieu.uzh.ch}}
 \affil[4]{Kihara Institute for Biological Research, Yokohama City University, Maioka 641-12, Totsuka-ward, Yokohama 244-0813, Japan}
 
 \date{\today}
@@ -119,7 +120,7 @@ $$w_i = w_0 + s_1 g_i + \frac{s_2}{N_k}\sum^{N_{k}}_{j=1}{g_ig_j}~~~~~(1)$$
 where $w_0$ indicates the base fitness; $s_1$ and $s_2$ indicate the selection coefficients for self-genotype effects and genotype similarity, respectively; and $N_k$ indicates the total number of individuals within subpopulation $k$. The genotype similarity $\sum^{N_{k}}_{j=1}{g_ig_j}$ represents the similarity (or difference) of the genotype composition of the subpopulation from the individual $i$. If two individuals share the \textit{same} genotype values, $g_ig_j = (+1)\times(+1) = (-1)\times(-1) = +1$. If two individuals have \textit{different} genotype values, $g_ig_j = (-1)\times(+1) = (+1)\times(-1) = -1$. Thus, the within-population genotype similarity $(\sum^{N_{k}}_{j=1}{g_ig_j})/N_k$ ranges from -1.0 (perfect dissimilarity) to +1.0 (perfect similarity; Fig. \ref{fig1:scheme}c). In addition, we could also assume an additive expression for a trait responsible for FDS as $g_{i(j)} \in$ \{AA, Aa, aa\} $=$ \{+1, 0, -1\}, where the products involving heterozygotes were considered $0 \times 0 = 0$ (neither similar nor dissimilar). This additive encoding enabled us to assume the intermediate strength of the FDS for an intermediate morph. However, most empirical studies have reported FDS between two out of multiple morphs \citep[for example,][]{gigord2001negative,takahashi2010negative,le2015evolutionary,sato2017herbivore,nosil2018natural}. Given that intermediate FDS on an additive trait is still uncommon, in this report, we focus on dominant encoding.
 
 \begin{figure}[ht]
-  \includegraphics[width=\linewidth]{Fig1_scheme.pdf}
+  \includegraphics[width=\linewidth]{scheme.pdf}
   \caption{Presumable design for genotype sampling (a), fitness measurement (b), selection gradient analysis (c). (a) Individuals carrying different genotypes (black and white squares) interact with each other (two-way arrows) within natural populations (gray circles). The genotypes are shaped by mutations, selection, and drift in natural populations. (b) Individuals are then sampled from natural populations and randomly arrayed in a continuous (upper) or split space (lower). Individual fitness is observed as a consequence of pairwise interactions (two-way arrows). (c) The selection gradient is finally analyzed using a regression of the observed fitness $w_i$ on genotypes $g_i$. The second term in the equation is the same as Equation (1) in the main text and indicates how the second selection coefficient $s_2$ represents pairwise interactions between the genotypes $g_i$ and $g_j$.
 }
   \label{fig1:scheme}
@@ -154,7 +155,7 @@ $$y_\mathrm{a} = f y_\mathrm{Aa} + (1 - f) y_\mathrm{aa}~~~\mathrm{(3.2b)}$$
 Figure \ref{fig2:asym} shows how the fitness values Equations (3.1a), (3.1b), and (3b) vary in response to the allele frequency $f$. Symmetric negative FDS was exemplified by the negative $\beta_2$ without any asymmetric effects $\beta_{12}$ (i.e., $\beta_{12}=0$; Fig. \ref{fig2:asym}a). Asymmetric negative FDS was described by the negative (Fig. \ref{fig2:asym}c) or positive (Fig. \ref{fig2:asym}e) asymmetric effect $\beta_{12}$, where the negative $\beta_2$ denoted negative FDS on the relative fitness between two alleles (Fig. \ref{fig2:asym}c, e). In contrast, symmetric positive FDS was exemplified by the positive $\beta_2$ with no (Fig. \ref{fig2:asym}b), negative (Fig. \ref{fig2:asym}d), or positive (Fig. \ref{fig2:asym}f) values of the asymmetric effect $\beta_{12}$. In summary, the sign of $\beta_2$ represented negative or positive FDS on relative fitness between two alleles even when the asymmetric effects $\beta_{12}$ were not zero.
 
 \begin{figure}[]
-  \includegraphics[width=0.75\linewidth]{Fig2_AsymFDSdomi.pdf}
+  \includegraphics[width=0.75\linewidth]{AsymFDSdomi.pdf}
   \caption{Numerical examples for the fitness values $y_i$ in response to allele frequency when the A allele is completely dominant over the a allele. The black and gray lines indicate the marginal fitness of A and a alleles; that is, Equations (3.2a) and (3.2b), respectively. Dashed curves indicate the mean population fitness between the two alleles (see case 1 in Appendix S3). (a) Symmetric negative FDS; (b) Symmetric positive FDS; (c and e) asymmetric negative FDS; and (d and f) asymmetric positive FDS. Closed and open circles indicate a stable or unstable state, respectively. The base fitness and no directional selection were set at $\beta_0=1.0$ and $\beta_1=0.0$ for all panels.}
   \label{fig2:asym}
 \end{figure}
@@ -211,7 +212,7 @@ We evaluated the performance of LMMs in terms of causal variant detection and ef
 The performance of LMMs was compared with that of standard LMs (Fig. \ref{fig3:beta2LMM}, Fig. \ref{figS5:beta2LM}). In terms of AUC, LMMs outperformed LMs in the detection of negative FDS (Fig. \ref{fig3:beta2LMM}, Fig. \ref{figS5:beta2LM}). Although LMs and LMMs exhibited similar performances for positive FDS, LMs overestimated the true strength of positive FDS more than LMMs (Fig. \ref{fig3:beta2LMM}, Fig. \ref{figS5:beta2LM}). LMMs retained a slight power to detect polygenic stabilizing selection (weakly concave ROC curve), whereas LMs had almost no power to detect the stabilizing selection (almost flat ROC curve; Fig. \ref{figS6:beta1LMM} and \ref{figS7:beta1LM}). These results suggest that LMMs suit the proposed method because they can more efficiently capture negative FDS or prevent overestimation of the strength of positive FDS.
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{Fig3_beta2LMMdomi.pdf}
+  \includegraphics[width=\linewidth]{beta2LMMdomi.pdf}
   \caption{Performance of linear mixed models to estimate four types of simulated selection: NFDS, negative frequency-dependent selection (red); PFDS, positive frequency-dependent selection (blue); OD, overdominance (dark gray); and STVS, spatiotemporally varying selection (light gray). The upper and lower panels show the results of the continuous and split settings, respectively (Fig. \ref{fig1:scheme}b). The left panels show the receiver operating characteristic (ROC) curve, which indicates the relationship between the true positive rate and false positive rate. The middle panel shows the area under the ROC curve (AUC). Dashed lines at AUC = 0.5, indicate no power to detect causal single nucleotide polymorphisms (SNPs). Boxplots show the median by a center line, upper and lower quartiles by box limits, 1.5$\times$ interquartile range by whiskers, and outliers by points. The right panels show the estimated $\beta_2$ of causal SNPs, where negative and positive values indicate negative and positive FDS, respectively. Large open circles indicate the true magnitude of selection coefficients.}
   \label{fig3:beta2LMM}
 \end{figure}
@@ -252,7 +253,7 @@ Self $\times$ Similarity $\hat{\beta}_{12}$                 & -0.042            
 \end{table}
 
 \begin{figure}[ht]
-  \includegraphics[width=\linewidth]{Fig4_Ah_le_plots.pdf}
+  \includegraphics[width=\linewidth]{Ah_Ie_plots.pdf}
   \caption{Fitness functions for (a) the adjusted number of flowers in \textit{A. halleri} and (b) the number of mature eggs in \textit{I. elegans}. Fitness functions are based on the estimates from Table 1 and are shown at a phenotype level (see case 3 in Appendix S3) to project model trends on the observed fitness. Black and white lines indicate the fitness function of dominant (i.e., hairy and andromorph) or recessive (glabrous and gynomorph) morphs, respectively. Filled and open circles indicate the observed fitness for the dominant or recessive morph within a plot, respectively. The dashed curve shows mean fitness. The black dot represents a stable equilibrium under negative FDS. In panel (a), a single circle corresponds to a field plot, where the average number of flowers adjusted by plant size (mm) among hairy or glabrous plants is given after log($x$+0.1)-transformed.}
   \label{fig4:GLMM}
 \end{figure}
@@ -268,8 +269,8 @@ We also tested the asymmetric effects $\beta_{12}$ for all SNPs by detecting a Q
 To compare the LMMs and LMs, we applied standard linear models for the branch number (Fig. \ref{figS10:gwasLM}). For the self-genotype effects, a large number of SNPs showed larger -log\textsubscript{10}($p$-values) scores than the Bonferroni threshold (Fig. \ref{figS10:gwasLM}a). The observed $p$-values for the self-genotype effects were greater than expected (Fig. \ref{figS11:QQplotLM}a), showing that LMs should not be used for GWAS of the branch number. We also observed a slight inflation of the observed $p$-values for the genotype similarity and asymmetric effects (Fig. \ref{figS11:QQplotLM}b,c). Consistent with the results of LMMs, the estimate sign of $\hat{\beta}_2$ indicated that negative FDS rather than positive FDS was more likely observed among the top-scoring SNPs (Fig. \ref{figS10:gwasLM}d). Combined with the simulation above, these empirical results suggest that LMMs are more suitable for GWAS than LMs.
 
 \begin{figure}[ht]
-  \includegraphics[width=\linewidth]{Fig5_ManhattanPlotLMM.png}
-  \caption{Field genome-wide association studies of branch number in \textit{Arabidopsis thaliana}. The results of linear mixed models are shown. (a, b, and c) Manhattan plots for self-genotype effects, genotype similarity effects, and asymmetric effects, respectively. Horizontal dashed lines indicate $p$-value $=$ 0.05, after Bonferroni correction. (d) Histogram of estimated $\beta_2$ among SNPs exhibiting $p$-values $<$ 0.0001. Negative and positive $\beta_2$ infer loci responsible for negative and positive FDS, respectively.}
+  \includegraphics[width=\linewidth]{ManhattanPlotLMM.png}
+  \caption{Genome-wide association studies of branch number in field-grown \textit{Arabidopsis thaliana}. The results of linear mixed models are shown. (a, b, and c) Manhattan plots for self-genotype effects, genotype similarity effects, and asymmetric effects, respectively. Horizontal dashed lines indicate $p$-value $=$ 0.05, after Bonferroni correction. (d) Histogram of estimated $\beta_2$ among SNPs exhibiting $p$-values $<$ 0.0001. Negative and positive $\beta_2$ infer loci responsible for negative and positive FDS, respectively.}
   \label{fig5:gwas}
 \end{figure}
 
@@ -296,7 +297,7 @@ Pairwise interaction models have been extensively analyzed in relation to one lo
 The present simulation and application offer an effective way to infer FDS in genetic association studies of fitness components. Our phenotype-driven approach can distinguish between positive and negative FDS based on direct observations of fitness. In molecular population genetics, phenotype-free methods are available to detect signatures of past balancing selection \citep{siewert_detecting_2017}. While fitness measurements are labor-intensive, selection gradient analysis has an advantage in quantifying ongoing FDS. Now that genome information is accumulating in wild organisms \citep{lewin2018earth}, organismal biologists may utilize genome data for a deeper understanding of the maintenance of polymorphism. A joint approach using genomics and fitness evaluation would enable future studies to unveil FDS throughout the genome.
 
 \section*{Acknowledgments}
-The authors thank M. Yamazaki and all members of the Shimizu group for their help with the setup of the \textit{A. thaliana} experiment; H. Kudoh for discussions during the \textit{A. halleri} study; J. Bascompte and S.E. Wuest for comments on the draft. This study was supported by the Japan Society for the Promotion of Science (JSPS) KAKENHI (Grant No. 20K15880) and Japan Science and Technology Agency (JST) PRESTO (JPMJPR17Q4) grants to Y.S. and Swiss National Science Foundation (31003A\_182318) and JST CREST (JPMJCR16O3) grants to K.K.S. The fieldwork at Zurich was supported by the University of Zurich via the University Research Priority Program for "Global Change and Biodiversity.” The authors declare no conflict of interest.
+The authors thank M. Yamazaki, A. Morishima, and all members of the Shimizu group for their help with the setup of the \textit{A. thaliana} experiment; H. Kudoh for discussions during the \textit{A. halleri} study; and J. Bascompte and S.E. Wuest for comments on the draft. This study was supported by the Japan Society for the Promotion of Science (JSPS) KAKENHI (Grant No. 20K15880) and Japan Science and Technology Agency (JST) PRESTO (JPMJPR17Q4) grants to Y.S. and Swiss National Science Foundation (31003A\_182318) and JST CREST (JPMJCR16O3) grants to K.K.S. The fieldwork at Zurich was supported by the University of Zurich via the University Research Priority Program for "Global Change and Biodiversity.” The authors declare no conflict of interest.
 
 \section*{Data Availability Statement}
 The source codes and original data generated by this study are available in the GitHub repository (\url{https://github.com/yassato/RegressionFDS}).
@@ -369,7 +370,7 @@ $$
 where the elements of the transition matrix were calculated from the three genotype frequencies and the segregation ratio of Mendelian inheritance. The zero elements pose a constraint where one homozygote cannot turn into another homozygote in a single generation. Given that the sum of the three genotype frequencies was 1 as $f_\mathrm{AA}+f_\mathrm{Aa}+f_\mathrm{aa}=1$, the probability of staying as a heterozygote was 0.5. Therefore, the outcome from the modified Metropolis algorithm was expected to be qualitatively the same as a random proposal of three genotypes but quantitatively different in the excess of heterozygotes within a population.
 
 \begin{figure}[]
-  \includegraphics[width=0.8\linewidth]{FigS1_IsingExample.png}
+  \includegraphics[width=0.8\linewidth]{IsingExample.png}
   \caption{Numerical simulations maximizing the fitness $w_1 = w_0 + s_1g_i + (s_2 / {N_k})\sum^{N_k}_{j=i}{g_ig_j}$ (Appendix S1) for 100 generations. White, gray, and black colors indicate the AA, Aa, and aa genotypes, respectively. The upper panels (a, b) represent plant genotype distributions across a 100 $\times$ 100 continuous lattice space when interactions are restricted to the second nearest neighbors ($N_k=14$). Each grid corresponds to an individual. Lower panels (c, d) represent the genotype frequencies among 100 split populations composed of 100 individuals each. Each vertical bar corresponds to a population. Left panels (a, c) simulate positive frequency-dependent selection (FDS), while right panels (b, d) simulate negative FDS. The base fitness and directional selection coefficient were set at $w_0 = 0$ and $s_1 = 10^{-4}$ for all simulations, while the subpopulation size $N_k$ and interaction strength per individual $s_2/N_k$ were changed.}
   \label{figS1:Ising}
 \end{figure}
@@ -590,7 +591,7 @@ The relative fitness was calculated as $y_\mathrm{A} - y_\mathrm{a} = (2f-1)[f(\
 Figure S2 shows numerical examples of the marginal fitness [Equations (S3.4d) and (S3.4e)] and the mean fitness [Equation (S3.4f)] in response to $f$. Similar to the case of complete dominance, the mean fitness was maximized or minimized at a stable or unstable equilibrium under the symmetric FDS (Fig. \ref{figS2:FDSadd}a and b). In contrast, a stable and unstable equilibrium occurred simultaneously under asymmetric FDS (Fig. \ref{figS2:FDSadd}c and f), where the maxima or minima of mean fitness did not always match the equilibria. This potential of multiple equilibria was also suggested by a one-locus two-allele model of pairwise interactions when it involved asymmetric FDS \citep{schneider_maximization_2008}. 
 
 \begin{figure}[]
-  \includegraphics[width=0.75\linewidth]{FigS2_AsymFDSadd.pdf}
+  \includegraphics[width=0.75\linewidth]{AsymFDSadd.pdf}
   \caption{Numerical examples for the fitness values $y_i$ in response to allele frequency when A and a alleles have additive effects on the fitness; that is, Equations (S3.4d) and (S3.4e) in Appendix S3. Black and gray lines indicate the marginal fitness of the A allele or an allele, respectively. The dashed curves indicate the mean fitness per population; that is, Equation (S3.4f) in Appendix S3. (a) Symmetric negative frequency-dependent selection (FDS); (b) symmetric positive FDS; (c and e) asymmetric negative FDS; and (d and f) asymmetric positive FDS. Closed and open circles indicate a stable or unstable state, respectively. The base fitness and no directional selection were set at $\beta_0=1.0$ and $\beta_1=0.0$ for all panels.}
   \label{figS2:FDSadd}
 \end{figure}
@@ -651,7 +652,7 @@ where the relative fitness is given by $y_\mathrm{AA} - y_\mathrm{aa} = 2\beta_1
 \end{equation*}
 
 \begin{figure}[]
-  \includegraphics[width=0.75\linewidth]{FigS3_AsymFDSinbred.pdf}
+  \includegraphics[width=0.75\linewidth]{AsymFDSinbred.pdf}
   \caption{Numerical examples of fitness values $y_i$ in response to allele frequency when only the AA and aa genotypes exist without mating [Equations (S3.5a) and (S3.5b) in Appendix S3]. Black and gray lines indicate the fitness functions for the AA and aa genotypes, respectively. The dashed curves indicate the mean fitness per population; that is, Equation (S3.5c) in Appendix S3. (a) Symmetric negative frequency-dependent selection (FDS); (b) symmetric positive FDS; (c and e) asymmetric negative FDS; and (d and f) asymmetric positive FDS. Closed and open circles indicate a stable or unstable state, respectively. The base fitness and no directional selection were set at $\beta_0=1.0$ and $\beta_1=0.0$ for all panels.}
   \label{figS3:FDSinbred}
 \end{figure}
@@ -671,50 +672,50 @@ Table S4. List of candidate genes related to self-genotype effects (a), genotype
 \subsection*{Supplementary Figures S4--S10}
 
 \begin{figure}[ht]
-  \includegraphics[width=\linewidth]{FigS4_GenomeSummary.pdf}
+  \includegraphics[width=\linewidth]{SimGenomeSummary.pdf}
   \caption{Structure of simulated genomes regarding the loci responsible for stabilizing selection (a), the other forms of selection (b), and genome-wide single nucleotide polymorphisms [SNPs](c). Number of SNPs, mean minor allele frequency (MAF), mean heterozygosity (Ht), and mean fixation indices (G\textsubscript{st}) are shown among 30 iterations for four scenarios of selection: NFDS, negative frequency-dependent selection; PFDS, positive frequency-dependent selection; OD, overdominance; STVS, spatiotemporally varying selection.}
   \label{figS4:GenStr}
 \end{figure}
 
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{FigS5_beta2LMdomi.pdf}
+  \includegraphics[width=\linewidth]{beta2LMdomi.pdf}
   \caption{Performance of standard linear models to estimate four types of simulated selection: NFDS, negative frequency-dependent selection; PFDS, positive frequency-dependent selection; OD, overdominance; and STVS, spatiotemporally varying selection. The upper and lower panels show the results of the continuous and split settings, respectively (Fig. \ref{fig1:scheme}b). The left panels show the receiver operating characteristic (ROC) curve, which indicates the relationship between the true positive rate and false positive rate. Line colors indicate different simulation scenarios (blue, NFDS; red, PFDS; black, OD; gray, STVS). The middle panel shows the area under the ROC curve (AUC). Dashed lines at AUC = 0.5, indicate no power to detect causal single nucleotide polymorphisms (SNPs). The right panels show the estimated $\beta_2$ of causal SNPs, where negative and positive values indicate negative and positive FDS, respectively. Large open circles indicate the true magnitude of selection coefficients.}
   \label{figS5:beta2LM}
 \end{figure}
 
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{FigS6_beta1LMMdomi.pdf}
+  \includegraphics[width=\linewidth]{beta1LMMdomi.pdf}
   \caption{Performance of linear mixed models to detect stabilizing selection under its joint action with four types of selection: NFDS, negative frequency-dependent selection (red); PFDS, positive frequency-dependent selection (blue); OD, overdominance (dark gray); and STVS, spatiotemporally varying selection (light gray). The upper and lower panels show the results of the continuous and split settings, respectively (Fig. \ref{fig1:scheme}b). The left panels show the receiver operating characteristic (ROC) curve, which indicates the relationship between the true positive rate and false positive rate. The middle panels show the area under the ROC curve (AUC). Dashed lines at AUC = 0.5, indicate no power to detect causal single nucleotide polymorphisms (SNPs). The right panels show the estimated $\beta_2$ of causal SNPs, where negative and positive values indicate negative and positive FDS, respectively. Large open circles indicate the true magnitude of selection coefficients.}
   \label{figS6:beta1LMM}
 \end{figure}
 
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{FigS7_beta1LMdomi.pdf}
+  \includegraphics[width=\linewidth]{beta1LMdomi.pdf}
   \caption{Performance of standard linear models to detect stabilizing selection under its joint action with four types of selection:  NFDS, negative frequency-dependent selection (red); PFDS, positive frequency-dependent selection (blue); OD, overdominance (dark gray); and STVS, spatiotemporally varying selection (light gray). The upper and lower panels show the results of the continuous and split settings, respectively (Fig. \ref{fig1:scheme}b). The left panels show the receiver operating characteristic (ROC) curve, which indicates the relationship between the true positive rate and false positive rate. The middle panels show the area under the ROC curve (AUC). Dashed lines at AUC = 0.5, indicate no power to detect causal single nucleotide polymorphisms (SNPs). The right panels show the estimated $\beta_2$ of causal SNPs, where negative and positive values indicate negative and positive FDS, respectively. Large open circles indicate the true magnitude of selection coefficients.}
   \label{figS7:beta1LM}
 \end{figure}
 
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{FigS8_QQplotLMM.png}
-  \caption{QQ-plots showing observed and expected $p$-values for the field genome-wide association studies of branch number in \textit{A. thaliana}. The results for linear mixed models are shown. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Red lines indicate the identity between the observed and expected $p$-value scores. The gray region indicates the 95\% confidence interval.}
+  \includegraphics[width=\linewidth]{QQplotLMM.png}
+  \caption{QQ-plots showing observed and expected $p$-values for the genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results for linear mixed models are shown. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Red lines indicate the identity between the observed and expected $p$-value scores. The gray region indicates the 95\% confidence interval.}
   \label{figS9:QQplotLMM}
 \end{figure}
 
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{FigS9_ManhattanPlotLM.png}
-  \caption{Field genome-wide association studies of branch number in \textit{A. thaliana}. The results of standard linear models are presented. (a, b, and c) Manhattan plots for self-genotype effects, genotype similarity effects, and asymmetric effects, respectively. Horizontal dashed lines indicate $p$-value of $<$ 0.05, after Bonferroni correction. (d) Histogram of estimated $\beta_2$ among single nucleotide polymorphisms (SNPs) exhibiting $p$-values of $<$ 0.0001. Negative and positive $\beta_2$ infer loci responsible for negative and positive frequency-dependent selection, respectively.}
+  \includegraphics[width=\linewidth]{ManhattanPlotLM.png}
+  \caption{Genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results of standard linear models are presented. (a, b, and c) Manhattan plots for self-genotype effects, genotype similarity effects, and asymmetric effects, respectively. Horizontal dashed lines indicate $p$-value of $<$ 0.05, after Bonferroni correction. (d) Histogram of estimated $\beta_2$ among single nucleotide polymorphisms (SNPs) exhibiting $p$-values of $<$ 0.0001. Negative and positive $\beta_2$ infer loci responsible for negative and positive frequency-dependent selection, respectively.}
   \label{figS10:gwasLM}
 \end{figure}
 
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{FigS10_QQplotLM.png}
-  \caption{QQ-plots showing observed and expected $p$-values for field genome-wide association studies of branch number in \textit{A. thaliana}. The results of standard linear models are presented. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Red lines indicate the identity between the observed and expected $p$-value scores. The gray region indicates the 95\% confidence interval.}
+  \includegraphics[width=\linewidth]{QQplotLM.png}
+  \caption{QQ-plots showing observed and expected $p$-values for the genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results of standard linear models are presented. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Red lines indicate the identity between the observed and expected $p$-value scores. The gray region indicates the 95\% confidence interval.}
   \label{figS11:QQplotLM}
 \end{figure}
 

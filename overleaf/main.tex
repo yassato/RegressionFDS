@@ -145,8 +145,8 @@ where $\beta_{12}$ indicates the coefficient for the asymmetric effects of genot
 \subsubsection{Fitness functions with respect to regression coefficients}
 To clarify how the coefficients for genotype similarity effects $\beta_2$ and asymmetric effects $\beta_{12}$ corresponded to FDS, we finally analyzed Equation (2.2) as a function of allele frequencies. If all individuals uniformly interacted in a sufficiently large population with random mating (i.e., $N_k \to \infty$), the likelihood of one genotype interacting with the other genotypes depend on genotype frequencies derived from an allele frequency within a population (Appendix S3). Let $f$ be the frequency of the A allele within the panmictic infinite population. The ratio of genotype frequency on panmixia was as follows: AA: Aa: aa = $f^2:2f(1-f):(1-f)^2$. Assuming the complete dominance of the A allele over the a allele ($x_{i(j)} \in$ \{AA, Aa, aa\} $=$ \{+1, +1, -1\}), we calculated all the combinations among the three genotypes (Table \ref{tableS2:intTable}) and consequent fitness $y_i$ for AA, Aa, and aa genotypes as
 
-$$y_\mathrm{AA} = y_\mathrm{Aa} = \beta_0 + \beta_2 f^2 + 2\beta_2 f(1-f) - \beta_2(1-f)^2 + \beta_{12}f^2 + 2\beta_{12}f(1-f) - \beta_{12}(1-f)^2~~~\mathrm{(3.1a)}$$
-$$y_\mathrm{aa} = \beta_0 - \beta_2 f^2 - 2\beta_2 f(1-f) + \beta_2(1-f)^2 + \beta_{12}f^2 + 2\beta_{12}f(1-f) - \beta_{12}(1-f)^2~~~\mathrm{(3.1b)}$$
+$$y_\mathrm{AA} = y_\mathrm{Aa} = \beta_0 + (\beta_2 + \beta_{12})f^2 + 2(\beta_2 + \beta_{12}) f(1-f) - (\beta_2 + \beta_{12})(1-f)^2~~~\mathrm{(3.1a)}$$
+$$y_\mathrm{aa} = \beta_0 - (\beta_2 - \beta_{12}) f^2 - 2(\beta_2 - \beta_{12})f(1-f) + (\beta_2 - \beta_{12})(1-f)^2~~~\mathrm{(3.1b)}$$
 where $y_\mathrm{AA}$, $y_\mathrm{Aa}$, and $y_\mathrm{aa}$ denote the fitness values for the AA, Aa, and aa genotypes, respectively (Appendix S3). The allele-level marginal fitness was then defined by weighting the genotype fitness with the allele frequency as follows:
 
 $$y_\mathrm{A} = f y_\mathrm{AA} + (1 - f) y_\mathrm{Aa}~~~\mathrm{(3.2a)}$$

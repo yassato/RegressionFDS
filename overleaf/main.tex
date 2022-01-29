@@ -13,7 +13,7 @@
 \usepackage{multirow}
 
 \usepackage{natbib}
-\bibliographystyle{ametsoc2014}
+\bibliographystyle{genetics}
 
 \usepackage[left]{lineno}
 \linenumbers
@@ -101,7 +101,7 @@ Frequency-dependent selection (FDS) drives an evolutionary regime that maintains
 \section{Introduction}
 Widespread polymorphism is a remarkable hallmark of the genomes of wild organisms. Balancing selection occurs when multiple alleles are maintained at a single locus through negative frequency-dependent selection (FDS), overdominance, and spatiotemporal variation in selection pressure \citep{hedrick2007balancing}. Among these mechanisms, negative FDS favors rare alleles over common alleles and consequently maintains multiple alleles at a locus. To date, negative FDS has been reported to act on coloration \citep{gigord2001negative, takahashi2010negative, le2015evolutionary, nosil2018natural}, self-incompatibility \citep{llaurens2008does, joly2011migration}, and resistance to natural enemies \citep{antonovics1984experimental, brunet2000disease, sato2017herbivore}. Conversely, positive FDS favors common alleles over rare alleles and thus disrupts polymorphisms \citep{borer2010positive, garrido2016effect}.
 
-High-throughput genotyping technology has now allowed us to reveal the genomic basis of ecologically important traits and/or fitness in wild organisms \citep{durham_genome-wide_2014, fisher_genetic_2016, nosil2018natural, exposito2019natural, tsuchimatsu2020adaptive}. Specifically, population-wide single nucleotide polymorphism (SNP) data help to depict fitness-genotype maps across genomes. For example, Exposito-Alonso et al. (2019) performed genetic association studies to identify variants associated with the survival of \textit{Arabidopsis thaliana} under drought conditions and thereby estimated the strength of selection on a genome. In genome-wide association studies (GWAS) and quantitative trait locus (QTL) mapping, many statistical genetic analyses are based on linear regressions of a trait on genotype values \citep{broman2009single, gondro2013genome}. If the target trait is a direct component of fitness, the regression coefficient of each locus would infer a selection gradient \citep{lande1983measurement} at that locus.
+High-throughput genotyping technology has now allowed us to reveal the genomic basis of ecologically important traits and/or fitness in wild organisms \citep{durham_genome-wide_2014, fisher_genetic_2016, nosil2018natural, exposito2019natural, tsuchimatsu2020adaptive}. Specifically, population-wide single nucleotide polymorphism (SNP) data help to depict fitness-genotype maps across genomes. For example, \cite{exposito2019natural} performed genetic association studies to identify variants associated with the survival of \textit{Arabidopsis thaliana} under drought conditions and thereby estimated the strength of selection on a genome. In genome-wide association studies (GWAS) and quantitative trait locus (QTL) mapping, many statistical genetic analyses are based on linear regressions of a trait on genotype values \citep{broman2009single, gondro2013genome}. If the target trait is a direct component of fitness, the regression coefficient of each locus would infer a selection gradient \citep{lande1983measurement} at that locus.
 
 Despite its increasing appreciation, little is known about the applicability of genetic association studies for FDS. Population genetics theory has long suggested that pairwise interactions among genotypes lead to FDS at the population level \citep{schutz1969inter, cockerham1972frequency, asmussen_frequency-dependent_1990, schneider_maximization_2008}. Such pairwise interaction models assume that interactions between two given genotypes are expressed as interaction coefficients. Fitness can then be determined by the mean strength of interaction, which is defined as the sum of pairwise interactions weighted by its genotype frequency in the population \citep{cockerham1972frequency, asmussen_frequency-dependent_1990}. As the strength of pairwise interactions depends on the genotype composition of a population, FDS could occur at the population level. Owing to the explicit formulation of inter-genotype interactions within a population, the pairwise interaction model represents various forms of FDS from plant competition \citep{schutz1969inter} to animal behavior \citep{alvarez2005models}, depending on the spatial scale of the interacting individuals. If the pairwise interaction model can be implemented as a genetic marker regression, it may be widely applicable from continuous to structured populations (Fig. \ref{fig1:scheme}).
 
@@ -372,6 +372,11 @@ $g_i$ / $g_j$             & \multicolumn{2}{l|}{AA} & \multicolumn{2}{l|}{ A } &
   \label{tableS1:MCMCinherit}
 \end{table}
 
+\begin{figure}[]
+  \includegraphics[width=0.8\linewidth]{IsingExample.png}
+  \caption{Numerical simulations maximizing the fitness $w_1 = w_0 + s_1g_i + (s_2 / {N_k})\sum^{N_k}_{j=i}{g_ig_j}$ (Appendix S1) for 100 generations. White, gray, and black colors indicate the AA, Aa, and aa genotypes, respectively. The upper panels (a, b) represent plant genotype distributions across a 100 $\times$ 100 continuous lattice space when interactions are restricted to the second nearest neighbors ($N_k=14$). Each grid corresponds to an individual. Lower panels (c, d) represent the genotype frequencies among 100 split populations composed of 100 individuals each. Each vertical bar corresponds to a population. Left panels (a, c) simulate positive frequency-dependent selection (FDS), while right panels (b, d) simulate negative FDS. The base fitness and directional selection coefficient were set at $w_0 = 0$ and $s_1 = 10^{-4}$ for all simulations, while the subpopulation size $N_k$ and interaction strength per individual $s_2/N_k$ were changed.}
+  \label{figS1:Ising}
+\end{figure}
 
 The probability of sampling AA, Aa, or aa at $t+1$ generation is denoted as $P_{\mathrm{AA},t+1}$, $P_{\mathrm{Aa},t+1}$, and $P_{\mathrm{aa},t+1}$, respectively. Let $f_\mathrm{AA}$, $f_\mathrm{Aa}$, and $f_\mathrm{aa}$ be the frequencies of genotypes AA, Aa, and aa within a population with $f_\mathrm{AA}$, $f_\mathrm{Aa}$, and $f_\mathrm{aa}$. In summary, the transition from generation $t$ to $t+1$ is expressed as:
 $$
@@ -395,14 +400,7 @@ $$
 \noindent
 where the elements of the transition matrix were calculated from the three genotype frequencies and the segregation ratio of Mendelian inheritance. The zero elements pose a constraint where one homozygote cannot turn into another homozygote in a single generation. Given that the sum of the three genotype frequencies was 1 as $f_\mathrm{AA}+f_\mathrm{Aa}+f_\mathrm{aa}=1$, the probability of staying as a heterozygote was 0.5. Therefore, the outcome from the modified Metropolis algorithm was expected to be qualitatively the same as a random proposal of three genotypes but quantitatively different in the excess of heterozygotes within a population.
 
-\begin{figure}[]
-  \includegraphics[width=0.8\linewidth]{IsingExample.png}
-  \caption{Numerical simulations maximizing the fitness $w_1 = w_0 + s_1g_i + (s_2 / {N_k})\sum^{N_k}_{j=i}{g_ig_j}$ (Appendix S1) for 100 generations. White, gray, and black colors indicate the AA, Aa, and aa genotypes, respectively. The upper panels (a, b) represent plant genotype distributions across a 100 $\times$ 100 continuous lattice space when interactions are restricted to the second nearest neighbors ($N_k=14$). Each grid corresponds to an individual. Lower panels (c, d) represent the genotype frequencies among 100 split populations composed of 100 individuals each. Each vertical bar corresponds to a population. Left panels (a, c) simulate positive frequency-dependent selection (FDS), while right panels (b, d) simulate negative FDS. The base fitness and directional selection coefficient were set at $w_0 = 0$ and $s_1 = 10^{-4}$ for all simulations, while the subpopulation size $N_k$ and interaction strength per individual $s_2/N_k$ were changed.}
-  \label{figS1:Ising}
-\end{figure}
-
 Figure S1 shows the results of the numerical simulations with the three genotypes encoded as $g_{i(j)} \in$ \{AA, Aa, aa\} $=$ \{+1, +1, -1\}. The three genotypes were well mixed and maintained in a continuous space when $s_2<0$ (Fig. \ref{figS1:Ising}a), whereas several clusters of the aa genotype were observed when $s_2>0$ (Fig. \ref{figS1:Ising}b). Three genotypes were also maintained at an intermediate frequency in a split space when $s_2<0$, whereas the allele frequency was heavily biased when $s_2>0$ (Fig. \ref{figS1:Ising}c). The numerical simulations show that the sign of $s_2$ likely corresponded to the direction of the frequency-dependent selection (FDS) in a continuous and split space.
-
 
 \medskip
 \subsection*{Appendix S2. Mixed model extension}

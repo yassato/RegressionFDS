@@ -40,26 +40,26 @@ Y = scale(log(pheno_d$BranchNo+1))
 res = nei_lmm(geno=geno,g_nei=g_nei,pheno=Y,addcovar=X,n_core=24L,asym=TRUE)
 res = data.frame(position,res)
 colnames(res) = c("Chr","Position","MAF","beta_self","beta_nei","beta_sxn","P_self","P_nei","P_sxn")
-write.csv(res,"210604_BranchNoNeiGWASbolting_CHZ2019_scaledLMMasym.csv")
+write.csv(res,"BranchNoNeiGWASbolting_CHZ2019_scaledLMMasym.csv")
 gc();gc()
 
 # LM w/ asymmetric FDS
 res = nei_lm(geno=geno,g_nei=g_nei,pheno=Y,addcovar=X,n_core=24L,asym=TRUE)
 res = data.frame(position,res)
 colnames(res) = c("Chr","Position","MAF","beta_self","beta_nei","beta_sxn","P_self","P_nei","P_sxn")
-write.csv(res,"210604_BranchNoNeiGWASbolting_CHZ2019_scaledLMasym.csv")
+write.csv(res,"BranchNoNeiGWASbolting_CHZ2019_scaledLMasym.csv")
 gc();gc()
 
 # LMM w/o asymmetric FDS
 res = nei_lmm(geno=geno,g_nei=g_nei,pheno=Y,addcovar=X,n_core=24L)
 res = data.frame(position,res)
 colnames(res) = c("Chr","Position","MAF","beta_self","beta_nei","P_self","P_nei")
-write.csv(res,"210604_BranchNoNeiGWASbolting_CHZ2019_scaledLMM.csv")
+write.csv(res,"BranchNoNeiGWASbolting_CHZ2019_scaledLMM.csv")
 gc();gc()
 
 # LMM w/o asymmetric FDS
 res = nei_lm(geno=geno,g_nei=g_nei,pheno=Y,addcovar=X,n_core=24L)
 res = data.frame(position,res)
 colnames(res) = c("Chr","Position","MAF","beta_self","beta_nei","P_self","P_nei")
-write.csv(res,"210604_BranchNoNeiGWASbolting_CHZ2019_scaledLM.csv")
+write.csv(res,"BranchNoNeiGWASbolting_CHZ2019_scaledLM.csv")
 gc();gc()

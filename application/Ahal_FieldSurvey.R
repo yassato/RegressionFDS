@@ -1,7 +1,11 @@
 # Single-marker analysis using Arabidopsis halleri 
 
+######
+# data analysis
+
 # load library
 library(lme4)
+library(ggplot2)
 
 # field data collected at the Omoide River (OM) site, Hyogo, Japan.
 # original data are available via Dryad (https://doi.org/10.5061/dryad.53k2d)
@@ -31,25 +35,30 @@ summary(glmer(Flower~Trichome*xixj+Total+(1|Year/PatchID), data=OMcensus, family
 summary(glmer(Flower~Trichome+xixj+Total+(1|Year/PatchID), data=OMcensus, family=poisson,
               offset=log(MaxLeaf+1), control=glmerControl(optimizer="bobyqa")))
 
+#####
 # Figure
-svg("Ahal_plot.svg",width=5,height=5)
 
 # observed
 d2 = aggregate(log((OMcensus$Flower/OMcensus$MaxLeaf)+0.1)~Year+factor(Trichome)+OMcensus$gProp,OMcensus,mean)
 pch = rep(NA,length(d2$`factor(Trichome)`))
 pch[d2$`factor(Trichome)`==-1] = 1; pch[d2$`factor(Trichome)`==1] = 16
 hFreq = 1 - d2$`OMcensus$gProp`
-plot(d2$`log((OMcensus$Flower/OMcensus$MaxLeaf) + 0.1)`~hFreq,pch=pch,las=1,col="grey",
-     ylab="log(no. of flowers / mm)",xlab="phenotype-level frequency of hairy morph",cex.lab=1.2)
 
 # predicted (see Appendix S3)
-b0 = -2.076348; b1 = 0.146011; b2 = -0.163216; b12 = -0.087591
-curve((b12+b2)*(2*x-1)+b0+b1,ylim=c(-2.5,-1.5),add=T,
-      las=1,ylab="Absolute fitness",xlab="Frequency of A alleles",
-      cex.axis=1.2,cex.lab=1.2,col=grey(0.0,1.0),lwd=1.5)
-curve((b12-b2)*(2*x-1)+b0-b1,add=T,col=grey(0.0,0.33),lwd=1.5)
-curve(2*b2*x*(2*x-1)+(b12-b2)*(2*x-1)+b0-b1+2*b1*x,add=T,lty=2,lwd=1.5)
-f_star = 0.5-(b1/(2*b2))
-points(f_star,(b12+b2)*(2*f_star-1)+b0+b1,pch=16,cex=1.5)
+# b0 = -2.076348; b1 = 0.146011; b2 = -0.163216; b12 = -0.087591
+# f_star = 0.5-(b1/(2*b2))
 
-dev.off()
+plt_Ah = function(b0,b1,b2,b12) {
+  f_star = 0.5-(b1/(2*b2))
+  p1 = ggplot(NULL,aes(x=hFreq,y=d2$`log((OMcensus$Flower/OMcensus$MaxLeaf) + 0.1)`)) + theme_classic() +
+    geom_point(pch=pch,col="grey") + xlab("phenotype-level frequency of hairy morph") + ylab("log(no. of flowers / mm)") + 
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12+b2)*(2*x-1)+b0+b1 }, args=list(b0,b1,b2,b12)) + 
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12-b2)*(2*x-1)+b0-b1 }, args=list(b0,b1,b2,b12), colour=grey(0.0,0.33)) +
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { 2*b2*x*(2*x-1)+(b12-b2)*(2*x-1)+b0-b1+2*b1*x }, args=list(b0,b1,b2,b12), lty=2) +
+    geom_point(aes(x=f_star,y=(b12+b2)*(2*f_star-1)+b0+b1),pch=16,size=3) + labs(title=substitute(paste(italic('Arabidopsis halleri'))))
+  return(p1)
+}
+
+p1 = plt_Ah(b0 = -2.076348, b1 = 0.146011, b2 = -0.163216, b12 = -0.087591)
+ 
+saveRDS(p1,file="Ahal_plot.rds")

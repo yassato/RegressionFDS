@@ -280,7 +280,7 @@ Self $\times$ Similarity $\hat{\beta}_{12}$                 & -0.042            
 
 \begin{figure}[ht]
   \includegraphics[width=\linewidth]{Ah_Ie_plots.pdf}
-  \caption{Fitness functions for (a) the adjusted number of flowers in \textit{A. halleri} and (b) the number of mature eggs in \textit{I. elegans}. Fitness functions are based on the estimates from Table 1 and are shown at a phenotype level (see case 3 in Appendix S3) to project model trends on the observed fitness. Black and white lines indicate the fitness function of dominant (i.e., hairy and andromorph) or recessive (glabrous and gynomorph) morphs, respectively. Filled and open circles indicate the observed fitness for the dominant or recessive morph within a plot, respectively. The dashed curve shows mean fitness. The black dot represents a stable equilibrium under negative FDS. In panel (a), a single circle corresponds to a field plot, where the average number of flowers adjusted by plant size (mm) among hairy or glabrous plants is given after log($x$+0.1)-transformed.}
+  \caption{Negative frequency dependence in (a) the adjusted number of flowers in \textit{A. halleri} and (b) the number of mature eggs in \textit{I. elegans}. Fitness functions are based on the estimates from Table 1 and are shown at a phenotype level (see case 3 in Appendix S3) to project model trends on the observed fitness. Black and white lines indicate the fitness function of dominant (i.e., hairy and andromorph) or recessive (glabrous and gynomorph) morphs, respectively. Filled and open circles indicate the observed fitness for the dominant or recessive morph within a plot, respectively. The dashed curve shows mean fitness. The black dot represents a stable equilibrium under negative FDS. In panel (a), a single circle corresponds to a field plot, where the average number of flowers adjusted by plant size (mm) among hairy or glabrous plants is given after log($x$+0.1)-transformed.}
   \label{fig4:GLMM}
 \end{figure}
 
@@ -295,7 +295,7 @@ We also tested the asymmetric effects $\beta_{12}$ for all SNPs by detecting a Q
 To compare the LMMs and LMs, we applied standard linear models for the branch number (Fig. \ref{figS10:gwasLM}). For the self-genotype effects, a large number of SNPs showed larger -log\textsubscript{10}($p$-values) scores than the Bonferroni threshold (Fig. \ref{figS10:gwasLM}a). The observed $p$-values for the self-genotype effects were greater than expected (Fig. \ref{figS11:QQplotLM}a), showing that LMs should not be used for GWAS of the branch number. We also observed a slight inflation of the observed $p$-values for the genotype similarity and asymmetric effects (Fig. \ref{figS11:QQplotLM}b,c). Consistent with the results of LMMs, the estimate sign of $\hat{\beta}_2$ indicated that negative FDS rather than positive FDS was more likely observed among the top-scoring SNPs (Fig. \ref{figS10:gwasLM}d). Combined with the simulation above, these empirical results suggest that LMMs are more suitable for GWAS than LMs.
 
 \begin{figure}[ht]
-  \includegraphics[width=\linewidth]{ManhattanPlotLMM.png}
+  \includegraphics[width=\linewidth]{ManhattanLMM.png}
   \caption{Genome-wide association studies of branch number in field-grown \textit{Arabidopsis thaliana}. The results of linear mixed models are shown. (a, b, and c) Manhattan plots for self-genotype effects, genotype similarity effects, and asymmetric effects, respectively. Horizontal dashed lines indicate $p$-value $=$ 0.05, after Bonferroni correction. (d) Histogram of estimated $\beta_2$ among SNPs exhibiting $p$-values $<$ 0.0001. Negative and positive $\beta_2$ infer loci responsible for negative and positive FDS, respectively.}
   \label{fig5:gwas}
 \end{figure}
@@ -743,13 +743,13 @@ Table S4. List of candidate genes related to self-genotype effects (a), genotype
 
 \begin{figure}[]
   \includegraphics[width=\linewidth]{QQplotLMM.png}
-  \caption{QQ-plots showing observed and expected $p$-values for the genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results for linear mixed models are shown. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Red lines indicate the identity between the observed and expected $p$-value scores. The gray region indicates the 95\% confidence interval.}
+  \caption{QQ-plots showing observed and expected $p$-values for the genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results for linear mixed models are shown. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Dashed lines indicate the identity between the observed and expected $p$-value scores.}
   \label{figS9:QQplotLMM}
 \end{figure}
 
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{ManhattanPlotLM.png}
+  \includegraphics[width=\linewidth]{ManhattanLM.png}
   \caption{Genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results of standard linear models are presented. (a, b, and c) Manhattan plots for self-genotype effects, genotype similarity effects, and asymmetric effects, respectively. Horizontal dashed lines indicate $p$-value of $<$ 0.05, after Bonferroni correction. (d) Histogram of estimated $\beta_2$ among single nucleotide polymorphisms (SNPs) exhibiting $p$-values of $<$ 0.0001. Negative and positive $\beta_2$ infer loci responsible for negative and positive frequency-dependent selection, respectively.}
   \label{figS10:gwasLM}
 \end{figure}
@@ -757,7 +757,7 @@ Table S4. List of candidate genes related to self-genotype effects (a), genotype
 
 \begin{figure}[]
   \includegraphics[width=\linewidth]{QQplotLM.png}
-  \caption{QQ-plots showing observed and expected $p$-values for the genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results of standard linear models are presented. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Red lines indicate the identity between the observed and expected $p$-value scores. The gray region indicates the 95\% confidence interval.}
+  \caption{QQ-plots showing observed and expected $p$-values for the genome-wide association studies of branch number in field-grown \textit{A. thaliana}. The results of standard linear models are presented. The left (a), middle (b), and right (c) panels display self-genotype, genotype similarity, and asymmetric effects, respectively. Dashed lines indicate the identity between the observed and expected $p$-value scores.}
   \label{figS11:QQplotLM}
 \end{figure}
 

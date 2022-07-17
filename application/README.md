@@ -23,3 +23,5 @@ R script to prepare genotype data for for "BranchNo2019GWAS.R".
 - subsetSNP.py  
 Python script to extract genotype data from .hdf available at AraGWAS Catalog (https://aragwas.1001genomes.org).  
   
+**Note that the others are input or intermediate file given by a symbolic link**  
+

@@ -17,3 +17,5 @@ GWAS simulation and power analysis using the SLiM output.
 Figure presentation for the GWAS simulation.  
 - /output  
 A folder to save SLiM and R outputs.  
+  
+**Note that the others are input or intermediate file given by a symbolic link**  

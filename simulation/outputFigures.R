@@ -311,7 +311,7 @@ beta_p2 = ggplot(NULL,aes(x=lab,y=c(beta5,beta6,beta7,beta8))) + geom_boxplot(ou
   geom_text(aes(x=c(1:4,4),y=c(-0.1,0.1,0.1,-0.1,0.1)),label="X",size=4)
 
 p2 = roc_p2 + auc_p2 + beta_p2
-p = (p1 / p2) + plot_annotation(tag_levels="a")
+p = (p2 / p1) + plot_annotation(tag_levels="a")
 ggsave(p,filename="beta2LMMdomi.pdf",width=9,height=6)
 
 
@@ -533,7 +533,7 @@ beta_p2 = ggplot(NULL,aes(x=lab,y=c(beta5,beta6,beta7,beta8))) + geom_boxplot(ou
   geom_text(aes(x=c(1:4,4),y=c(-0.1,0.1,0.1,-0.1,0.1)),label="X",size=4)
 
 p2 = roc_p2 + auc_p2 + beta_p2
-p = (p1 / p2) + plot_annotation(tag_levels="a")
+p = (p2 / p1) + plot_annotation(tag_levels="a")
 ggsave(p,filename="beta2LMdomi.pdf",width=9,height=6)
 
 
@@ -755,7 +755,7 @@ beta_p2 = ggplot(NULL,aes(x=lab,y=c(beta5,beta6,beta7,beta8))) + geom_boxplot(ou
   geom_text(aes(x=c(1:4),y=c(0.1,0.1,0.1,0.1)),label="X",size=4)
 
 p2 = roc_p2 + auc_p2 + beta_p2
-p = (p1 / p2) + plot_annotation(tag_levels="a")
+p = (p2 / p1) + plot_annotation(tag_levels="a")
 ggsave(p,filename="beta1LMMdomi.pdf",width=9,height=6)
 
 
@@ -977,5 +977,5 @@ beta_p2 = ggplot(NULL,aes(x=lab,y=c(beta5,beta6,beta7,beta8))) + geom_boxplot(ou
   geom_text(aes(x=c(1:4),y=c(0.1,0.1,0.1,0.1)),label="X",size=4)
 
 p2 = roc_p2 + auc_p2 + beta_p2
-p = (p1 / p2) + plot_annotation(tag_levels="a")
+p = (p2 / p1) + plot_annotation(tag_levels="a")
 ggsave(p,filename="beta1LMdomi.pdf",width=9,height=6)

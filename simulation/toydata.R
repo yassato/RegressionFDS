@@ -118,3 +118,86 @@ colnames(x) = c("chr","pos","p")
 gaston::manhattan(x,las=1,thinning=FALSE)
 abline(h=-log10(0.05/nrow(g_nei)),lty=2,col="grey")
 
+# toy2
+
+d2 = readRDS("./output/toy2.rds")
+
+d2$gi[d2$gi=="A"] = 1
+d2$gi[d2$gi=="a"] = -1
+d2$gi = as.numeric(d2$gi)
+
+smap = cbind(d2$X,d2$Y)
+geno = as.matrix(d2$gi)
+gigj = nei_coval(geno,smap,scale=sqrt(2+0.01))
+d2 = data.frame(d2,gigj)
+
+res = lm(y~gi*gigj,data=d2)
+summary(res)
+
+freq = (d2$gi*d2$gigj/2) + 0.5
+d2 = data.frame(d2,freq)
+
+plt = function(b0,b1,b2,b12) {
+  f_star = 0.5-(b1/(2*b2))
+  p = ggplot(d2, aes(x=freq,y=y)) + geom_jitter(pch=d2$gi+2,colour="grey",width=0.05) +
+    theme_classic() + ylab("Fitness") + xlab("phenotype-level local frequency of A") + xlim(0,1) +
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12+b2)*(2*x-1)+b0+b1 }, args=list(b0,b1,b2,b12)) + 
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12-b2)*(2*x-1)+b0-b1 }, args=list(b0,b1,b2,b12), colour=grey(0.0,0.33)) +
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { 2*b2*x*(2*x-1)+(b12-b2)*(2*x-1)+b0-b1+2*b1*x }, args=list(b0,b1,b2,b12), lty=2) +
+    geom_point(aes(x=f_star,y=(b12+b2)*(2*f_star-1)+b0+b1),pch=16,size=3)
+  
+  return(p)
+}
+
+p = plt(b0=coef(summary(res))[1,1], 
+        b1=coef(summary(res))[2,1],
+        b2=coef(summary(res))[3,1],
+        b12=coef(summary(res))[4,1])
+p
+
+
+# toy1
+
+d1 = readRDS("./output/toy1.rds")
+d1$gi[d1$gi=="A"] = 1
+d1$gi[d1$gi=="a"] = -1
+d1$gi = as.numeric(d1$gi)
+
+gigj = c()
+for(i in 1:nrow(d1)) {
+  ds = d1[-i,]
+  ds = subset(ds,group==d1$group[i])
+  gigj = c(gigj,d1$gi[i]*mean(ds$gi))
+}
+
+d1 = data.frame(d1,gigj)
+res = lme4::lmer(y~gi*gigj+(1|group),data=d1)
+summary(res)
+
+freq = c()
+for(i in 1:nrow(d1)) {
+  ds = subset(d1,group==d1$group[i])
+  freq = c(freq,mean(ds$gi))
+}
+
+freq = (freq/2) + 0.5
+d1 = data.frame(d1,freq)
+
+library(ggplot2)
+plt = function(b0,b1,b2,b12) {
+  f_star = 0.5-(b1/(2*b2))
+  p = ggplot(d1, aes(x=freq,y=y)) + geom_jitter(pch=d1$gi+2,colour="grey",width=0.05) +
+    theme_classic() + ylab("Fitness") + xlab("phenotype-level frequency of A") + xlim(0,1) +
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12+b2)*(2*x-1)+b0+b1 }, args=list(b0,b1,b2,b12)) + 
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12-b2)*(2*x-1)+b0-b1 }, args=list(b0,b1,b2,b12), colour=grey(0.0,0.33)) +
+    geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { 2*b2*x*(2*x-1)+(b12-b2)*(2*x-1)+b0-b1+2*b1*x }, args=list(b0,b1,b2,b12), lty=2) +
+    geom_point(aes(x=f_star,y=(b12+b2)*(2*f_star-1)+b0+b1),pch=16,size=3)
+  
+  return(p)
+}
+
+p = plt(b0=coef(summary(res))[1,1], 
+        b1=coef(summary(res))[2,1],
+        b2=coef(summary(res))[3,1],
+        b12=coef(summary(res))[4,1])
+p

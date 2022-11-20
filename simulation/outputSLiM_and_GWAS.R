@@ -30,7 +30,7 @@ runGWAS = function(type=c("NFDS","PFDS","OD","STVS"), setting=c("split","continu
       g_nei = nei_coval(g,smap,scale=20,grouping=group)
       
       g_domi = g
-      g_domi[g_domi==0] = 1
+      g_domi[g_domi==0] = 1 # commenting out this line assumes additive effects
       g_nei_domi = nei_coval(g_domi,smap,scale=20,grouping=group)
     } else {
       smap = cbind(rep(1:(nrow(g)/30),each=nrow(g)/30),
@@ -39,7 +39,7 @@ runGWAS = function(type=c("NFDS","PFDS","OD","STVS"), setting=c("split","continu
       g_nei = nei_coval(g,smap,scale=1.42)
       
       g_domi = g
-      g_domi[g_domi==0] = 1
+      g_domi[g_domi==0] = 1 # commenting out this line assumes additive effects
       g_nei_domi = nei_coval(g_domi,smap,scale=1.42)
     }
     

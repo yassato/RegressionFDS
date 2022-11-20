@@ -1,0 +1,159 @@
+---
+title: "Vignette: regression model of FDS"
+output: rmdformats::downcute
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Background
+To estimate frequency-dependent selection (FDS) in the framework of selection gradient analysis, we proposed a regression model that considers genotype similarity as a covariate (Anonymous et al. in review). The purpose of this vignette is to demonstrate the usage of the proposed method with toy data. Throughout the vignette, we analyze single-locus and GWAS-style toy data (see "**Data**" below) under a split or continuous subpopulation structure (see "**Usage**" below).  
+
+Before seeing toy data, let us recapture the proposed model. The proposed method is given by a linear regression model as 
+$$y_i = \beta_0 + \beta_1x_i + \frac{\beta_2}{N_k}\sum^{N_{k}}_{j=1}{x_ix_j} + e_i~~~~~(1)$$
+or multiplicative regression model as
+$$y_i = \beta_0 + \beta_1x_i + \frac{\beta_2}{N_k}\sum^{N_{k}}_{j=1}{x_ix_j} + \frac{\beta_{12}x_i}{N_k}\sum^{N_{k}}_{j=1}{x_ix_j} + e_i~~~~~(2)$$
+where $y_i$ is a fitness component of individual $i$; $x_i$ is allelic status of individual $i$ at a given locus; $\beta_0$ is an intercept; and $\beta_1$ is a coefficient of directional selection on the locus. The term $(\sum^{N_{k}}_{j=1}{x_ix_j}) / N_k$ represents the mean genotype similarity between the focal individual $i$ and its counterpart individuals $j$. As described in the paper (Anonymous et al. in review), positive and negative effects of genotype similarity $\beta_2$ on fitness component represent positive and negative FDS on relative fitness, respectively. The the interaction term coefficient $\beta_{12}$ represent on asymmetric FDS on absolute fitness between two alleles.
+
+
+# Data
+Next, let us see the structure of input data. Four types of toy data are prepared for (1) single-locus example for split subpopulations; (2) single-locus example for contineous space; (3) GWAS example for split subpopulations; and (4) GWAS example for contineous subpopulations.  
+
+To do list; generate GWAS toy data using the SLiMlation output, with only 1 locus being non-zero beta; generate single-locus data using using the SLiMlation output without any polygenic effects from beta1.
+
+## 1. Single-locus example for split subpopulations
+
+```{r td1}
+d1 = readRDS("simulation/output/toy1.rds")
+head(d1)
+```
+
+
+## 2. Single-locus example for contineous space
+
+```{r td2}
+d2 = readRDS("simulation/output/toy2.rds")
+head(d2)
+```
+
+
+## 3. GWAS example for split subpopulations
+
+```{r td3}
+d3 = readRDS("simulation/output/toy3.rds")
+head(d3)
+```
+
+
+## 4. GWAS example for contineous space
+
+```{r td4}
+d4 = readRDS("simulation/output/toy4.rds")
+head(d4)
+```
+
+
+# Usage
+Then, we try to detect FDS using the single-locus and GWAS-style data.
+
+
+## 1. Single-locus example for split subpopulations
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r replace1}
+d1$gi[d1$gi=="A"] = 1
+d1$gi[d1$gi=="a"] = -1
+d1$gi = as.numeric(d1$gi)
+head(d1)
+```
+
+```{r gsim1}
+gigj = c()
+for(i in 1:nrow(d1)) {
+  ds = d1[-i,]
+  ds = subset(ds,group==d1$group[i])
+  gigj = c(gigj,d1$gi[i]*mean(ds$gi))
+}
+
+d1 = data.frame(d1,gigj)
+hist(d1$gigj)
+```
+
+```{r lmm1}
+res = lme4::lmer(y~gi*gigj+(1|group),data=d1)
+summary(res)
+
+res = lme4::lmer(y~gi+gigj+(1|group),data=d1)
+summary(res)
+```
+
+## 2. Single-locus example for contineous space
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## 3. GWAS example for split subpopulations
+
+```{r gwas3}
+d3 = readRDS("simulation/output/toy3.rds")
+
+g = gaston::read.vcf("simulation/output/1_NFDS.vcf.gz")
+g = gaston::select.snps(g, g@snps$maf>0.01)
+g = rNeighborGWAS::gaston2neiGWAS(g)
+geno = g$geno[d3$ID,]
+geno[geno==0] = 1
+smap = cbind(runif(nrow(d3),0,1),runif(nrow(d3),0,1)) # random dummy map
+g_nei = rNeighborGWAS::nei_coval(geno,smap,scale=10^6,grouping=d3$group)
+res = rNeighborGWAS::nei_lmm(geno,g_nei,d3$y,addcovar=model.matrix(~d3$group))
+
+x = data.frame(g$gmap,res$p_nei)
+colnames(x) = c("chr","pos","p")
+gaston::manhattan(x,las=1,thinning=FALSE)
+abline(h=-log10(0.05/nrow(g_nei)),lty=2,col="grey")
+```
+
+
+## 4. GWAS example for contineous space
+
+```{r gwas4}
+d4 = readRDS("simulation/output/toy4.rds")
+
+g = gaston::read.vcf("simulation/output/1_NFDS.vcf.gz")
+g = gaston::select.snps(g,g@snps$maf>0.01)
+g = rNeighborGWAS::gaston2neiGWAS(g)
+geno = g$geno[d4$ID,]
+geno[geno==0] = 1
+smap = cbind(d4$X,d4$Y)
+g_nei = rNeighborGWAS::nei_coval(geno,smap,scale=sqrt(2)+0.01)
+res = rNeighborGWAS::nei_lmm(geno,g_nei,d4$y)
+
+x = data.frame(g$gmap,res$p_nei)
+colnames(x) = c("chr","pos","p")
+gaston::manhattan(x,las=1,thinning=FALSE)
+abline(h=-log10(0.05/nrow(g_nei)),lty=2,col="grey")
+```
+
+# Notes
+
+## aaaa
+In contrast to the analysis of partial data, the proposed method deals with a full dataset for statistical tests of the coefficient $\beta_2$, which determines the direction and strength of the symmetric FDS. Even when FDS is asymmetric between two alleles, another coefficient $\beta_{12}$ helps us infer an accurate form of FDS on absolute fitness. Although the multiplicative model requires the additional estimation of $\beta_{12}$, we could still analyze the full dataset without using the subset data of each morph. Practically, we should first test $\beta_{12}$ using the multiplicative model and then test $\beta_2$ using the linear model if $\beta_{12}$ is not significant. The main effects $\hat{\beta}_{2}$ infer negative or positive FDS on relative fitness, whereas the coefficient of the asymmetric effect $\hat{\beta}_{12}$ modulates the fitness slope along the allele frequency. Despite the increased complexity due to the interaction term $\beta_{12}$, the direction of FDS on the relative fitness can be simply interpreted by estimation of the main effect $\beta_2$.
+
+## split + continous case
+
+
+# References
+
+1. Douglas Bates, Martin Maechler, Ben Bolker, Steve Walker (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.  
+1. Hervé Perdry and Claire Dandine-Roulland (2020). gaston: Genetic Data Handling (QC, GRM, LD, PCA) & Linear Mixed Models. R package version 1.5.7. https://CRAN.R-project.org/package=gaston  
+1. Sato Y, Yamamoto E, Shimizu KK, Nagano AJ (2021) Neighbor GWAS: incorporating neighbor genotypic identity into genome-wide association studies of field herbivory. Heredity 126(4):597-614. https://doi.org/10.1038/s41437-020-00401-w  
+

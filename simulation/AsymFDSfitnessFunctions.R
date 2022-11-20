@@ -25,15 +25,17 @@ wplot = function(b2,b12,pch) {
 } 
 
 pa = wplot(b2=-0.2,b12=0.0,pch=16)
-pa = pa + geom_text(aes(x=0.1,y=1.4),label="Black: A allele\nGrey: a allele\nDashed: mean",size=3)
-pb = wplot(b2=0.2,b12=0.0,pch=1)
-pc = wplot(b2=-0.2,b12=-0.3,pch=16)
-pd = wplot(b2=0.2,b12=-0.3,pch=1)
-pe = wplot(b2=-0.2,b12=0.3,pch=16)
+pa = pa + geom_text(aes(x=0.025,y=1.5),label="----- (black): A alleles",size=3,hjust=0) + 
+  geom_text(aes(x=0.025,y=1.4),label="----- (gray): a alleles",colour=grey(0.5,1),size=3,hjust=0) +
+  geom_text(aes(x=0.025,y=1.3),label="- - -  (dashed): mean",size=3,hjust=0)
+pb = wplot(b2=-0.2,b12=-0.3,pch=16)
+pc = wplot(b2=-0.2,b12=0.3,pch=16)
+pd = wplot(b2=0.2,b12=0.0,pch=1)
+pe = wplot(b2=0.2,b12=-0.3,pch=1)
 pf = wplot(b2=0.2,b12=0.3,pch=1)
 
-p = (pa | pb) / (pc | pd) / (pe | pf) + plot_annotation(tag_levels = "a")
-ggsave(p,filename="AsymFDSdomi.pdf",width=8,height=12)
+p = (pa | pb | pc) / (pd | pe | pf) + plot_annotation(tag_levels = "a")
+ggsave(p,filename="AsymFDSdomi.pdf",width=10,height=6)
 
 
 ############
@@ -61,15 +63,17 @@ wplot = function(b2,b12,pch=c(1,16)) {
 } 
 
 pa = wplot(b2=-0.2,b12=0,pch=c(16,1))
-pa = pa + geom_text(aes(x=0.1,y=1.4),label="Black: A allele\nGrey: a allele\nDashed: mean",size=3)
-pb = wplot(b2=0.2,b12=0,pch=c(1,16))
-pc = wplot(b2=-0.2,b12=-0.3,pch=c(16,1))
-pd = wplot(b2=0.2,b12=-0.3,pch=c(1,16))
-pe = wplot(b2=-0.2,b12=0.3,pch=c(16,1))
+pa = pa + geom_text(aes(x=0.025,y=1.5),label="----- (black): A alleles",size=3,hjust=0) + 
+  geom_text(aes(x=0.025,y=1.4),label="----- (gray): a alleles",colour=grey(0.5,1),size=3,hjust=0) +
+  geom_text(aes(x=0.025,y=1.3),label="- - -  (dashed): mean",size=3,hjust=0)
+pb = wplot(b2=-0.2,b12=-0.3,pch=c(16,1))
+pc = wplot(b2=-0.2,b12=0.3,pch=c(16,1))
+pd = wplot(b2=0.2,b12=0,pch=c(1,16))
+pe = wplot(b2=0.2,b12=-0.3,pch=c(1,16))
 pf = wplot(b2=0.2,b12=0.3,pch=c(1,16))
 
-p = (pa | pb) / (pc | pd) / (pe | pf) + plot_annotation(tag_levels = "a")
-ggsave(p,filename="AsymFDSadd.pdf",width=8,height=12)
+p = (pa | pb | pc) / (pd | pe | pf) + plot_annotation(tag_levels = "a")
+ggsave(p,filename="AsymFDSadd.pdf",width=10,height=6)
 
 
 ###########
@@ -87,13 +91,15 @@ wplot = function(b2,b12,pch) {
 } 
 
 pa = wplot(b2=-0.2,b12=0.0,pch=16)
-pa = pa + geom_text(aes(x=0.1,y=1.4),label="Black: A allele\nGrey: a allele\nDashed: mean",size=3)
-pb = wplot(b2=0.2,b12=0.0,pch=1)
-pc = wplot(b2=-0.2,b12=-0.3,pch=16)
-pd = wplot(b2=0.2,b12=-0.3,pch=1)
-pe = wplot(b2=-0.2,b12=0.3,pch=16)
+pa = pa + geom_text(aes(x=0.025,y=1.5),label="----- (black): A alleles",size=3,hjust=0) + 
+  geom_text(aes(x=0.025,y=1.4),label="----- (gray): a alleles",colour=grey(0.5,1),size=3,hjust=0) +
+  geom_text(aes(x=0.025,y=1.3),label="- - -  (dashed): mean",size=3,hjust=0)
+pb = wplot(b2=-0.2,b12=-0.3,pch=16)
+pc = wplot(b2=-0.2,b12=0.3,pch=16)
+pd = wplot(b2=0.2,b12=0.0,pch=1)
+pe = wplot(b2=0.2,b12=-0.3,pch=1)
 pf = wplot(b2=0.2,b12=0.3,pch=1)
 
-p = (pa | pb) / (pc | pd) / (pe | pf) + plot_annotation(tag_levels = "a")
-ggsave(p,filename="AsymFDSinbred.pdf",width=8,height=12)
+p = (pa | pb | pc) /  (pd | pe | pf) + plot_annotation(tag_levels = "a")
+ggsave(p,filename="AsymFDSinbred.pdf",width=10,height=6)
 

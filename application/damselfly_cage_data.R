@@ -47,7 +47,7 @@ p2 = ggplot(d, aes(x=frequency,y=log(matureeggnumber))) + geom_jitter(pch=pch,co
 plt_Ie = function(b0,b1,b2,b12) {
   f_star = 0.5-(b1/(2*b2))
   p2 = ggplot(d, aes(x=frequency,y=log(matureeggnumber))) + geom_jitter(pch=pch,colour="grey",width=0.05) +
-    theme_classic() + ylab("log(no. of eggs)") + xlab("phenotype-level frequency of andromorph") + xlim(0,1) +
+    theme_classic() + ylab("Egg production") + xlab("phenotype-level frequency of andromorph") + xlim(0,1) +
     geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12+b2)*(2*x-1)+b0+b1 }, args=list(b0,b1,b2,b12)) + 
     geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { (b12-b2)*(2*x-1)+b0-b1 }, args=list(b0,b1,b2,b12), colour=grey(0.0,0.33)) +
     geom_function(aes(x=1,y=1),fun=function(x,b0,b1,b2,b12) { 2*b2*x*(2*x-1)+(b12-b2)*(2*x-1)+b0-b1+2*b1*x }, args=list(b0,b1,b2,b12), lty=2) +

@@ -8,31 +8,30 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Background
-To estimate frequency-dependent selection (FDS) in the framework of selection gradient analysis, we proposed a regression model that considers genotype similarity as a covariate (Sato et al. 2022 *bioRxiv*). The purpose of this vignette is to demonstrate the usage of the proposed method with toy data. Throughout the vignette, we analyze single-locus and GWAS-style toy data under a split or continuous subpopulation structure (see "**Usage**" below). Rmarkdown source and input data of this vignette are available at the Github repository (<https://github.com/yassato/RegressionFDS>).  
+In order to estimate frequency-dependent selection (FDS) using the framework of selection gradient analysis, we have proposed a regression model that takes genotype similarity into account as a covariate (Sato et al. 2022 *bioRxiv*). The purpose of this vignette is to show how to use the proposed method with toy data. Throughout this vignette, we will analyze toy data with a single-locus or GWAS-style structure under either a split or continuous subpopulation structure (see 'Usage' below). The Rmarkdown source and input data for this vignette are available at the following Github repository: <https://github.com/yassato/RegressionFDS>  
 
-Before seeing toy data, let us recapture the proposed model. The proposed method is given by a linear regression model as 
+Before analyzing the toy data, let us review the proposed model. The proposed method is given by either a linear regression model:
 $$y_i = \beta_0 + \beta_1x_i + \frac{\beta_2}{N_k}\sum^{N_{k}}_{j=1}{x_ix_j} + e_i~~~~~(1)$$
-or multiplicative regression model as
+or a multiplicative regression model:
 $$y_i = \beta_0 + \beta_1x_i + \frac{\beta_2}{N_k}\sum^{N_{k}}_{j=1}{x_ix_j} + \frac{\beta_{12}x_i}{N_k}\sum^{N_{k}}_{j=1}{x_ix_j} + e_i~~~~~(2)$$
-where $y_i$ is a fitness component of individual $i$; $x_i$ is allelic status of individual $i$ at a given locus; $\beta_0$ is an intercept; and $\beta_1$ is a coefficient of directional selection on the locus. The term $(\sum^{N_{k}}_{j=1}{x_ix_j}) / N_k$ represents the mean genotype similarity between the focal individual $i$ and its counterpart individuals $j$. As described in the paper (Anonymous et al. in review), positive and negative effects of genotype similarity $\beta_2$ on fitness component represent positive and negative FDS on relative fitness, respectively. The the interaction term coefficient $\beta_{12}$ represent on asymmetric FDS on absolute fitness between two alleles.
+In these equations $y_i$ is the fitness component of individual $i$; $x_i$ is the allelic status of individual $i$ at a given locus; $\beta_0$ is the intercept; and $\beta_1$ is the coefficient of directional selection on the locus. The term $(\sum^{N_{k}}_{j=1}{x_ix_j}) / N_k$ represents the mean genotype similarity between the focal individual $i$ and its counterpart individuals $j$. As described in Sato et al. (2022), a positive effect of genotype similarity ($\beta_2$) on fitness component represents positive frequency-dependent selection (FDS) on relative fitness, while a negative effect represents negative FDS. The the interaction term coefficient $\beta_{12}$ represents asymmetric FDS on absolute fitness between two alleles.
 
 
 # Usage
-Here we see the structure of toy data first and then analyze these data using the proposed regression model (Eq. 2). Four types of toy data are prepared for (1) single-locus example for split subpopulations; (2) single-locus example for contineous space; (3) GWAS example for split subpopulations; and (4) GWAS example for contineous subpopulations.  
+Here, we will first examine the structure of the toy data and then analyze these data using the proposed regression model (Eq. 2). Four types of toy data are prepared for: (1) a single-locus example with split subpopulations; (2) a single-locus example with a continuous space; (3) a GWAS example with split subpopulations; and (4) a GWAS example with continuous subpopulations.  
 
 ## Single-locus examples 
-
-Data for single-locus examples are as simple as a single data frame can store. Data are saved as R Data style (.rds) but CSV and TSV are also possible. Using toy data, we estimate $\beta_1$, $\beta_2$, and $\beta_{12}$ and depict fitness functions as follows.
+The data for the single-locus examples are as simple as a single data frame can store. They are saved in R Data style (.rds), but CSV and TSV formats are also possible. Using the toy data, we will estimate $\beta_1$, $\beta_2$, and $\beta_{12}$ and depict the fitness functions as follows.
 
 ## (1) split subpopulations
 
-For each individual `ID`, data from split subpopulations should include the fitness component measure `y`, morph-type 'gi' (A or a), and its affiliated subpopulation ID `group`.
+For each individual `ID`, data from split subpopulations should include the fitness component measure `y`, morph-type 'gi' (A or a), and its affiliated subpopulation `group`.
 ```{r td1}
 d1 = readRDS("simulation/output/toy1.rds")
 head(d1)
 ```
 
-Before calculating genotype similarity, we convert genotypes into digits. Assuming the complete dominance of A morph over a morph under Mendelian inheritance, we convert A and a morph into +1 and -1, respectively.
+Before calculating genotype similarity, we convert genotypes into digits. Assuming complete dominance of the A morph over the a morph under Mendelian inheritance, we convert the A and a morphs into +1 and -1, respectively.
 ```{r replace1}
 d1$gi[d1$gi=="A"] = 1
 d1$gi[d1$gi=="a"] = -1
@@ -40,7 +39,7 @@ d1$gi = as.numeric(d1$gi) # make gi numeric
 head(d1)
 ```
 
-Then we calculate mean allelic similarity at the focal locus. The following implements the calculation of the mean allelic similarity within a subpopulation based on $(\sum^{N_{k}}_{j=1}{x_ix_j}) / N_k = x_i(\sum^{N_{k}}_{j=1}{x_j}) / N_k = x_i\bar{x_j}$.
+Then we calculate the mean allelic similarity at the focal locus. The following implements the calculation of the mean allelic similarity within a subpopulation based on $(\sum^{N_{k}}_{j=1}{x_ix_j}) / N_k = x_i(\sum^{N_{k}}_{j=1}{x_j}) / N_k = x_i\bar{x_j}$.
 ```{r gsim1}
 gigj = c()
 for(i in 1:nrow(d1)) {
@@ -54,13 +53,13 @@ hist(d1$gigj,xlim=c(-1,1))
 ```
 **Figure 1.** Histogram of the term $(\sum^{N_{k}}_{j=1}{x_ix_j}) / N_k$ ranging from -1 to +1.
 
-To estimate $\beta_1$, $\beta_2$, and $\beta_{12}$, we use linear mixed model with the subpopulation ID considered a random effect, as follows.
+To estimate $\beta_1$, $\beta_2$, and $\beta_{12}$, we use a linear mixed model with the subpopulation ID considered a random effect, as follows.
 ```{r lmm1}
 res = lme4::lmer(y~gi*gigj+(1|group),data=d1)
 summary(res)
 ```
 
-Based on $\hat{\beta}_1$, $\hat{\beta}_2$, and $\hat{\beta}_{12}$, we finally visualize fitness functions of FDS. According to Appendix S2 Sato et al. (2022), the fitness function of A morph and a morph is given by $y_\mathrm{A} = \beta_0 + \beta_1 + (\beta_{12}+\beta_2)(2f_\mathrm{A}-1)$ and $y_\mathrm{a} = \beta_0 - \beta_1 + (\beta_{12}-\beta_2)(2f_\mathrm{A}-1)$, respectively. The mean fitness is given by $\bar{y} = f_\mathrm{A}y_\mathrm{A} + (1-f_\mathrm{A})y_\mathrm{a}$, where $f_A$ is the frequency of A morph.
+Based on $\hat{\beta}_1$, $\hat{\beta}_2$, and $\hat{\beta}_{12}$, we finally visualize fitness functions of FDS. According to Appendix S2 Sato et al. (2022), the fitness function of the A morph and the a morph is given by $y_\mathrm{A} = \beta_0 + \beta_1 + (\beta_{12}+\beta_2)(2f_\mathrm{A}-1)$ and $y_\mathrm{a} = \beta_0 - \beta_1 + (\beta_{12}-\beta_2)(2f_\mathrm{A}-1)$, respectively. The mean fitness is given by $\bar{y} = f_\mathrm{A}y_\mathrm{A} + (1-f_\mathrm{A})y_\mathrm{a}$, where $f_A$ is the frequency of the A morph.
 ```{r plot1}
 freq = c() # calculate allele frequency within a subpopulation
 for(i in 1:nrow(d1)) {
@@ -89,17 +88,17 @@ p = plt(b0=coef(summary(res))[1,1],
         b12=coef(summary(res))[4,1])
 p
 ```
-**Figure 2.** Negative frequency-dependent selection on the single locus in split subpopulations. A black line and plus marks indicate fitness of A morph. A grey line and open circles indicate fitness of a morph. A dashed curve indicates population-level mean fitness.   
+**Figure 2.** Negative frequency-dependent selection at a single locus in split subpopulations. A black line and plus marks indicate the fitness of the A morph. A grey line and open circles indicate the fitness of the a morph. A dashed curve indicates the population-level mean fitness.   
 
 ## (2) continuous space
 
-Instead of the subpopulation ID, data from continuous space should include spatial positions of individuals in a two dimensional space along x- and y-axes (`X` and `Y`). Both continuous values (e.g., GPS locality) and relative distance (e.g., positions in a lattice space) are allowed for the record of `X` and `Y`.
+Instead of the subpopulation ID, data from continuous space should include the spatial positions of individuals in a two dimensional space along the x- and y-axes (`X` and `Y`). Both continuous values (e.g., GPS locality) and relative distance (e.g., positions in a lattice space) can be used to record the values of `X` and `Y`.
 ```{r td2}
 d2 = readRDS("simulation/output/toy2.rds")
 head(d2)
 ```
 
-Similarly to the split subpopulation case, we convert genotypes into digit in a case of continuous space. The genotype similarity the a continuous space can be calculated using the `nei_coval` function in the `rNeighborGWAS` package. For detailed usage of the `nei_coval` function, see also "GWAS examples" below.
+Similarly to the split subpopulation case, we convert genotypes into digit in the case of continuous space. The genotype similarity in a continuous space can be calculated using the `nei_coval` function in the `rNeighborGWAS` package. For detailed usage of the `nei_coval` function, see also "GWAS examples" below.
 ```{r gsim2}
 d2$gi[d2$gi=="A"] = 1
 d2$gi[d2$gi=="a"] = -1
@@ -111,14 +110,14 @@ gigj = rNeighborGWAS::nei_coval(geno,smap,scale=sqrt(2+0.01))
 d2 = data.frame(d2,gigj)
 
 ```
-where `scale=sqrt(2+0.01)` corresponds to the nearest neighbors i.e.,$N_k$=8. Then, we can use standard regression model since there are no grouping covariates in the case of a continuous space.
+where `scale=sqrt(2+0.01)` corresponds to the nearest neighbors (i.e.,$N_k$=8). Then, we can use a standard regression model since there are no grouping covariates in the case of a continuous space.
 
 ```{r lm2}
 res = lm(y~gi*gigj,data=d2)
 summary(res)
 ```
 
-Same as split subpopulations, we can depict fitness functions in response to the local frequency of A morph.
+As with split subpopulations, we can depict the fitness functions in response to the local frequency of the A morph.
 ```{r plot2}
 freq = (d2$gi*d2$gigj/2) + 0.5
 d2 = data.frame(d2,freq)
@@ -141,11 +140,11 @@ p = plt(b0=coef(summary(res))[1,1],
         b12=coef(summary(res))[4,1])
 p
 ```
-**Figure 3.** Negative frequency-dependent selection on the single locus in a continuous space. A black line and plus marks indicate fitness of A morph. A grey line and open circles indicate fitness of a morph. A dashed curve indicates population-level mean fitness.   
+**Figure 3.** Negative frequency-dependent selection at a single locus in a continuous space. A black line and plus marks indicate the fitness of the A morph. A grey line and open circles indicate the fitness of the a morph. A dashed curve indicates the population-level mean fitness.   
 
 
 ## GWAS examples
-Genotype data in a variant call format (.vcf) can be imported using the `gaston` package. Its `select.snps` function can cut off SNPs with minor allele frequency (MAF). The `gaston2neiGWAS` in the rNeighborGWAS package converts the genotypes in an additive manner as AA, Aa, and aa into +1, 0, -1, respectively. Rows and columns in `g$geno` contain individuals and loci, respectively.
+Genotype data in a variant call format (.vcf) can be imported using the `gaston` package. Its `select.snps` function can cut off SNPs with minor allele frequency (MAF). The `gaston2neiGWAS` in the rNeighborGWAS package converts the genotypes in an additive manner (AA, Aa, and aa) into +1, 0, -1, respectively. The rows and columns in `g$geno` contain individuals and loci, respectively.
 ```{r gdata}
 g = gaston::read.vcf("simulation/output/1_NFDS.vcf.gz")
 g = gaston::select.snps(g,g@snps$maf>0.01)
@@ -156,19 +155,19 @@ To analyze FDS, we combine these genotypes with phenotype records as follows.
 
 ## (3) split subpopulations
 
-Same as the single-locus example, phenotype data from split subpopulations should include the subpopulation ID `group`.
+As with the single-locus example, phenotype data from split subpopulations should include the subpopulation ID 'group'.
 ```{r td3}
 d3 = readRDS("simulation/output/toy3.rds")
 head(d3)
 ```
 
-Following the MAF cut-off on the genotype data, we extract individuals and assume the complete dominance of A alleles over a alleles.
+After applying the MAF cut-off to the genotype data, we extract the individuals and assume complete dominance of the A alleles over the a alleles.
 ```{r ind3}
 geno = g$geno[d3$ID,] # select the same individuals as phenotype files
 geno[geno==0] = 1 # skipping this line encodes genotypes in an additive way
 ```
 
-We then calculate the genotype similarity using the `nei_coval` function in the `rNeighborGWAS` package. Note that the `scale = 10^6` and `grouping` option allow us to assign individuals to subpopulations and calculate the genotype similarity with subpopulations. 
+We then calculate the genotype similarity using the `nei_coval` function in the `rNeighborGWAS` package. Note that the `scale=10^6` and `grouping` options allow us to assign individuals to subpopulations and calculate the genotype similarity within subpopulations.
 ```{r gsim3}
 smap = cbind(runif(nrow(d3),0,1),runif(nrow(d3),0,1)) # random dummy map in a small space
 g_nei = rNeighborGWAS::nei_coval(geno, # matrix of individual genotypes
@@ -199,19 +198,19 @@ abline(h=-log10(0.05/nrow(g_nei)),lty=2,col="grey") # Bonferroni correction
 
 ## (4) continuous space
 
-Same as the single-locus example, phenotype data from continuous space should include the spatial positions along x- and y-axes (`X` and `Y`).
+As with the single-locus example, phenotype data from continuous space should include the spatial positions along the x- and y-axes (`X` and `Y`).
 ```{r td4}
 d4 = readRDS("simulation/output/toy4.rds")
 head(d4)
 ```
 
-Same as the case of the split subpopulations, we extract individuals and assume the complete dominance of A alleles over a alleles.
+As in the case of split subpopulations, we extract the individuals and assume complete dominance of the A alleles over the a alleles.
 ```{r ind4}
 geno = g$geno[d4$ID,] # select the same individuals as phenotype files
 geno[geno==0] = 1 # skipping this line encodes genotypes in an additive way
 ```
 
-For a continuous space, we calculate the genotype similarity using the `nei_coval` function in the `rNeighborGWAS` package. The option `scale=sqrt(2+0.01)` corresponds to the nearest neighbors i.e.,$N_k$=8.
+For a continuous space, we calculate the genotype similarity using the `nei_coval` function in the `rNeighborGWAS` package. The option `scale=sqrt(2+0.01)` corresponds to the nearest neighbors (i.e.,$N_k$=8).
 ```{r gsim4}
 smap = cbind(d4$X,d4$Y)
 g_nei = rNeighborGWAS::nei_coval(geno, # matrix of individual genotypes
@@ -219,7 +218,7 @@ g_nei = rNeighborGWAS::nei_coval(geno, # matrix of individual genotypes
                                  scale=sqrt(2)+0.01) # scale=sqrt(2)+0.01 refers to the nearest neighbors
 ```
 
-Same as the case of split subpopulations, association tests are performed using the `nei_lmm` function in the `rNeighborGWAS` package. The `asym=TRUE` option is selected to test the asymmetric effects $\beta_{12}$ as well as $\beta_2$ and $\beta_1$.
+As in the case of split subpopulations, association tests are performed using the `nei_lmm` function in the `rNeighborGWAS` package. The `asym=TRUE` option is selected to test the asymmetric effects $\beta_{12}$ as well as $\beta_2$ and $\beta_1$.
 ```{r gwas4}
 res = rNeighborGWAS::nei_lmm(geno, # matrix of individual genotypes
                              g_nei, # matrix of genotype similarities
@@ -240,14 +239,14 @@ abline(h=-log10(0.05/nrow(g_nei)),lty=2,col="grey")
 
 # Notes
 
-### When the interaction term is significant
-If $\beta_{12}$ is significant, the estimates of $\beta_1$ and $\beta_2$ may not be correct in Equation (2). Practically, we should first test $\beta_{12}$ using the multiplicative model Equation (2). If $\beta_{12}$ is significant in Equation (2), we then estimate $\beta_2$ using the linear model Equation (1). Then $\hat{\beta}_{12}$ from Equation (2); $\hat{\beta}_1$ and $\hat{\beta}_2$ from Equation (1) may be used to depict the fitness functions.  
+### When the interaction term is significant:
+If $\beta_{12}$ is significant, the estimates of $\beta_1$ and $\beta_2$ may not be correct in Equation (2). Practically, we should first test $\beta_{12}$ using the multiplicative model Equation (2). If $\beta_{12}$ is significant in Equation (2), we then estimate $\beta_2$ using the linear model Equation (1). Then $\hat{\beta}_{12}$ from Equation (2), $\hat{\beta}_1$ and $\hat{\beta}_2$ from Equation (1) may be used to depict the fitness functions.  
 
-### How to analyze multi-year/site data on continous space?
-We can jointly use the `scale` and `grouping` option in the `nei_coval` function in the `rNeighborGWAS` package. If data on a continuous space are collected from multiple years or sites, individuals in different years or sites should be separated using the `grouping` option. The years or sites should be made numeric and assigned to the `grouping` option. Then, neighbor space to be referred should be specified using the `scale` option. In addition to these options, the `addcover` option in `nei_lmm` allows us to consider fixed effects of years or sites when performing association tests. See the vignette of the rNeighborGWAS pakage for this usage at <https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>.  
+### How to analyze multi-year/site data on continous space:
+We can jointly use the `scale` and `grouping` option in the `nei_coval` function in the `rNeighborGWAS` package. If data on a continuous space are collected from multiple years or sites, individuals in different years or sites should be separated using the `grouping` option. The years or sites should be made numeric and assigned to the `grouping` option. Then, the neighbor space to be referred should be specified using the `scale` option. In addition to these options, the `addcover` option in the `nei_lmm` function allows us to consider fixed effects of years or sites when performing association tests. See the vignette of the rNeighborGWAS pakage for this usage at <https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>.  
 
-### How to determine the spatial scale in a continuous space?
-This is not easy to determine but feasible by calculating the proportion of fitness variation explained (PVE) by the polygenic effects from the genotype similarity. If PVE peaks at a particular spatial scale, this scale would be optimal. See also Sato et al. (2021) *Heredity* for details; and the vignette of the rNeighborGWAS package (<https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>) for the usage.  
+### How to determine the spatial scale in a continuous space:
+This is not easy to determine but feasible by calculating the proportion of fitness variation explained (PVE) by the polygenic effects from the genotype similarity. If PVE peaks at a particular spatial scale, this scale would be optimal. See also Sato et al. (2021) *Heredity* for details. The vignette of the rNeighborGWAS package (<https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>) also provides more information on this topic.  
 
 # References  
 1. Bates D, Maechler M, Bolker B, Walker S. (2015) Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.  

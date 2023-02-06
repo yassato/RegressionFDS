@@ -8,12 +8,6 @@ Poisson GLMM of the flower number in wild *Arabidopsis halleri* in a natural pop
 Poisson GLMM of the egg number in *Ischnura elegans* in semi-field cages. Data are available upon request for Y. Takahashi.    
   
 ### Branch number GWAS in *Arabidopsis thaliana*  
-- BranchNo2019GWAS.R  
-Field GWAS of the branch number using 199 accessions of *A. thaliana*.  
-  
-- BranchNo2019GWASfigure.R  
-Manhattan and QQ plots for the output from "BranchNo2019GWAS.R".  
-  
 - pheno_branchNum.csv  
 Accession list and phenotype data for "BranchNo2019GWAS.R".  
   
@@ -23,5 +17,11 @@ R script to prepare genotype data for for "BranchNo2019GWAS.R".
 - subsetSNP.py  
 Python script to extract genotype data from .hdf available at AraGWAS Catalog (https://aragwas.1001genomes.org).  
   
-**Note that the others are input or intermediate file given by a symbolic link**  
+- BranchNo2019GWAS.R  
+Field GWAS of the branch number using 199 accessions of *A. thaliana*.  
+  
+- BranchNo2019GWASfigure.R  
+Manhattan and QQ plots for the output from "BranchNo2019GWAS.R".  
+  
+**Note that the others are input or intermediate files given as symbolic links**  
 

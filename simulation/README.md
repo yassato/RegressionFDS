@@ -18,4 +18,6 @@ Figure presentation for the GWAS simulation.
 - /output  
 A folder to save SLiM and R outputs.  
   
-**Note that the others are input or intermediate file given by a symbolic link**  
+### Vignette
+- toydata.R  
+R script to create the input toy data for the vignette (index.Rmd)  

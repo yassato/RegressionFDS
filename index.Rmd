@@ -1,5 +1,5 @@
 ---
-title: "Vignette: regression model of FDS"
+title: "Vignette: Regression model of FDS"
 output: rmdformats::downcute
 ---
 
@@ -243,7 +243,7 @@ abline(h=-log10(0.05/nrow(g_nei)),lty=2,col="grey")
 If $\beta_{12}$ is significant, the estimates of $\beta_1$ and $\beta_2$ may not be correct in Equation (2). Practically, we should first test $\beta_{12}$ using the multiplicative model Equation (2). If $\beta_{12}$ is significant in Equation (2), we then estimate $\beta_2$ using the linear model Equation (1). Then $\hat{\beta}_{12}$ from Equation (2), $\hat{\beta}_1$ and $\hat{\beta}_2$ from Equation (1) may be used to depict the fitness functions.  
 
 ### How to analyze multi-year/site data on continous space:
-We can jointly use the `scale` and `grouping` option in the `nei_coval` function in the `rNeighborGWAS` package. If data on a continuous space are collected from multiple years or sites, individuals in different years or sites should be separated using the `grouping` option. The years or sites should be made numeric and assigned to the `grouping` option. Then, the neighbor space to be referred should be specified using the `scale` option. In addition to these options, the `addcover` option in the `nei_lmm` function allows us to consider fixed effects of years or sites when performing association tests. See the vignette of the rNeighborGWAS pakage for this usage at <https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>.  
+We can jointly use the `scale` and `grouping` option in the `nei_coval` function in the `rNeighborGWAS` package. If data on a continuous space are collected from multiple years or sites, individuals in different years or sites should be separated using the `grouping` option. The years or sites should be made numeric and assigned to the `grouping` option. Then, the neighbor space to be referred should be specified using the `scale` option. In addition to these options, the `addcover` option in the `nei_lmm` function allows us to consider fixed effects of years or sites when performing association tests. See the vignette of the rNeighborGWAS package for this usage at <https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>.  
 
 ### How to determine the spatial scale in a continuous space:
 This is not easy to determine but feasible by calculating the proportion of fitness variation explained (PVE) by the polygenic effects from the genotype similarity. If PVE peaks at a particular spatial scale, this scale would be optimal. See also Sato et al. (2021) *Heredity* for details. The vignette of the rNeighborGWAS package (<https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>) also provides more information on this topic.  

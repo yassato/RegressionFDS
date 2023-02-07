@@ -20,7 +20,7 @@ wplot = function(b2,b12,pch) {
     geom_function(fun=W_a, col=grey(0.0,0.5),args=list(b2,b12)) + 
     geom_function(fun=W_m, lty=2,args=list(b2,b12)) + 
     ylab("Absolute fitness") + xlab("Frequency of A alleles") +
-    labs(title=bquote(beta[2]*" = "*.(b2)*"; "*beta[12]*" = "*.(b12)))
+    labs(title=bquote(beta[2]*" = "*.(b2)*"; "*beta[12]*" = "*.(format(b12,nsmall=1))))
   return(p)
 } 
 
@@ -57,7 +57,7 @@ wplot = function(b2,b12,pch=c(1,16)) {
     geom_function(fun=W_a, col=grey(0.0,0.5),args=list(b2,b12)) + 
     geom_function(fun=W_m, lty=2,args=list(b2,b12)) + 
     ylab("Absolute fitness") + xlab("Frequency of A alleles") +
-    labs(title=bquote(beta[2]*" = "*.(b2)*"; "*beta[12]*" = "*.(b12))) + 
+    labs(title=bquote(beta[2]*" = "*.(b2)*"; "*beta[12]*" = "*.(format(b12,nsmall=1)))) + 
     geom_point(aes(x=p2,y=w2),pch=pch[2],size=3)
   return(p)
 } 
@@ -86,7 +86,7 @@ wplot = function(b2,b12,pch) {
     geom_function(fun=function(x,b2,b12) (b12-b2)*(2*x-1)+1, col=grey(0.0,0.5),args=list(b2,b12)) + 
     geom_function(fun=function(x,b2,b12) 2*b2*x*(2*x-1)+(b12-b2)*(2*x-1)+1, lty=2,args=list(b2,b12)) + 
     ylab("Absolute fitness") + xlab("Frequency of A alleles") +
-    labs(title=bquote(beta[2]*" = "*.(b2)*"; "*beta[12]*" = "*.(b12)))
+    labs(title=bquote(beta[2]*" = "*.(b2)*"; "*beta[12]*" = "*.(format(b12,nsmall=1))))
   return(p)
 } 
 

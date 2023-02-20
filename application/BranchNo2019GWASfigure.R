@@ -39,7 +39,7 @@ man2 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_nei))) + geom_p
   geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("genotype similarity effects "*beta[2]))
 
 h1 = ggplot(subset(gwas_out,P_nei<0.0001),aes(x=beta_nei)) + geom_histogram() + 
-  theme_classic() + ylab("No. pf SNPs") + xlab(expression("Estimated "*beta[2]))
+  theme_classic() + ylab("No. of SNPs") + xlab(expression("Estimated "*beta[2]))
 
 gwas_out = read.csv("BranchNoNeiGWASbolting_CHZ2019_scaledLMMasym.csv", header=TRUE)
 b12 = paste0(subset(gwas_out,P_sxn<0.0001)$Chr,"-",subset(gwas_out,P_sxn<0.0001)$Position)
@@ -106,7 +106,7 @@ man2 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_nei))) + geom_p
   geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("genotype similarity effects "*beta[2]))
 
 h1 = ggplot(subset(gwas_out,P_nei<0.0001),aes(x=beta_nei)) + geom_histogram() + 
-  theme_classic() + ylab("No. pf SNPs") + xlab(expression("Estimated "*beta[2]))
+  theme_classic() + ylab("No. of SNPs") + xlab(expression("Estimated "*beta[2]))
 
 gwas_out = read.csv("BranchNoNeiGWASbolting_CHZ2019_scaledLMasym.csv", header=TRUE)
 man3 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_sxn))) + geom_point(colour=cols) +

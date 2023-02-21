@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Background
-In order to estimate frequency-dependent selection (FDS) using the framework of selection gradient analysis, we have proposed a regression model that takes genotype similarity into account as a covariate (Sato et al. 2022 *bioRxiv*). The purpose of this vignette is to show how to use the proposed method with toy data. Throughout this vignette, we will analyze toy data with a single-locus or GWAS-style structure under either a split or continuous subpopulation structure (see 'Usage' below). The Rmarkdown source and input data for this vignette are available at the following Github repository: <https://github.com/yassato/RegressionFDS>  
+In order to estimate frequency-dependent selection (FDS) using the framework of selection gradient analysis, we have proposed a regression model that takes genotype similarity into account as a covariate (Sato et al. 2023 *Evolution*). The purpose of this vignette is to show how to use the proposed method with toy data. Throughout this vignette, we will analyze toy data with a single-locus or GWAS-style structure under either a split or continuous subpopulation structure (see 'Usage' below). The Rmarkdown source and input data for this vignette are available at the following Github repository: <https://github.com/yassato/RegressionFDS>  
 
 Before analyzing the toy data, let us review the proposed model. The proposed method is given by either a linear regression model:
 $$y_i = \beta_0 + \beta_1x_i + \frac{\beta_2}{N_k}\sum^{N_{k}}_{j=1}{x_ix_j} + e_i~~~~~(1)$$
@@ -247,11 +247,14 @@ We can jointly use the `scale` and `grouping` option in the `nei_coval` function
 
 ### How to determine the spatial scale in a continuous space:
 This is not easy to determine but feasible by calculating the proportion of fitness variation explained (PVE) by the polygenic effects from the genotype similarity. If PVE peaks at a particular spatial scale, this scale would be optimal. See also Sato et al. (2021) *Heredity* for details. The vignette of the rNeighborGWAS package (<https://cran.r-project.org/web/packages/rNeighborGWAS/vignettes/rNeighborGWAS.html>) also provides more information on this topic.  
-
+  
+# Citation  
+When you need to cite this instruction, please cite the following publication: Sato Y, Takahashi Y, Xu C, Shimizu KK. (2023) Detecting frequency-dependent selection through the effects of genotype similarity on fitness components. Evolution. https://doi.org/10.1093/evolut/qpad028. This instruction file was developed as a part of the supplementary materials of Sato et al., (2023) *Evolution* during its peer-review.  
+  
 # References  
 1. Bates D, Maechler M, Bolker B, Walker S. (2015) Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.  
 1. Perdry H, Dandine-Roulland C. (2020) gaston: Genetic Data Handling (QC, GRM, LD, PCA) & Linear Mixed Models. R package version 1.5.7. https://CRAN.R-project.org/package=gaston  
 1. Sato Y, Yamamoto E, Shimizu KK, Nagano AJ. (2021) Neighbor GWAS: incorporating neighbor genotypic identity into genome-wide association studies of field herbivory. Heredity 126(4):597-614. https://doi.org/10.1038/s41437-020-00401-w  
-1. Sato Y, Takahashi Y, Xu C, Shimizu KK. (2022) Detecting frequency-dependent selection through the effects of genotype similarity on fitness components. bioRxiv https://doi.org/10.1101/2022.08.10.502782  
+1. Sato Y, Takahashi Y, Xu C, Shimizu KK. (2023) Detecting frequency-dependent selection through the effects of genotype similarity on fitness components. Evolution. https://doi.org/10.1093/evolut/qpad028 
 1. Wickham H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.  
 

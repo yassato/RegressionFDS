@@ -30,13 +30,13 @@ x = coord(gwas_out$Chr,gwas_out$Position)
 man1 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_self))) + geom_point(colour=cols) +
   theme_classic() + ylab("Association score") + xlab("Chromosomes") + 
   ggplot2::theme(axis.ticks.x=ggplot2::element_blank(),axis.text.x=ggplot2::element_blank()) + 
-  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("individual effects "*beta[1]))
+  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("Individual effects "*beta[1]))
 
 x = coord(gwas_out$Chr,gwas_out$Position)
 man2 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_nei))) + geom_point(colour=cols) +
   theme_classic() + ylab("Association score") + xlab("Chromosomes") + 
   ggplot2::theme(axis.ticks.x=ggplot2::element_blank(),axis.text.x=ggplot2::element_blank()) + 
-  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("genotype similarity effects "*beta[2]))
+  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("Genotype similarity effects "*beta[2]))
 
 h1 = ggplot(subset(gwas_out,P_nei<0.0001),aes(x=beta_nei)) + geom_histogram() + 
   theme_classic() + ylab("No. of SNPs") + xlab(expression("Estimated "*beta[2]))
@@ -46,7 +46,7 @@ b12 = paste0(subset(gwas_out,P_sxn<0.0001)$Chr,"-",subset(gwas_out,P_sxn<0.0001)
 man3 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_sxn))) + geom_point(colour=cols) +
   theme_classic() + ylab("Association score") + xlab("Chromosomes") + 
   ggplot2::theme(axis.ticks.x=ggplot2::element_blank(),axis.text.x=ggplot2::element_blank()) + 
-  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("asymmetric effects "*beta[12]))
+  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("Asymmetric effects "*beta[12]))
 
 mh = ((man1 / man2 / man3) | h1) + plot_layout(widths=c(3,1)) + plot_annotation(tag_levels="a")
 ggsave(mh,filename="ManhattanLMM.png",width=12,height=6,dpi=600)
@@ -64,13 +64,13 @@ cols = c(rgb(1,0,0, 2*gwas_out$MAF[1:chr_rep[1]]), rgb(0,1,0, 2*gwas_out$MAF[(ch
 q1 = ggplot(data=gwas_out, mapping=aes(x=-log(ppoints(length(P_self)),10),y=-log(sort(P_self,decreasing=FALSE),10))) +
   geom_point(colour="grey") +
   geom_abline(intercept=0,slope=1,linetype="dashed") +
-  theme_classic() + ggtitle(expression("individual effects "*beta[1])) +
+  theme_classic() + ggtitle(expression("Individual effects "*beta[1])) +
   xlab(expression("Expected "*-log[10](p))) + ylab(expression("Observed "*-log[10](p)))
 
 q2 = ggplot(data=gwas_out, mapping=aes(x=-log(ppoints(length(P_nei)),10),y=-log(sort(P_nei,decreasing=FALSE),10))) +
   geom_point(colour="grey") +
   geom_abline(intercept=0,slope=1,linetype="dashed") +
-  theme_classic() + ggtitle(expression("genotype similarity effects "*beta[2])) +
+  theme_classic() + ggtitle(expression("Genotype similarity effects "*beta[2])) +
   xlab(expression("Expected "*-log[10](p))) + ylab(expression("Observed "*-log[10](p)))
 
 gwas_out = read.csv("BranchNoNeiGWASbolting_CHZ2019_scaledLMMasym.csv", header=TRUE)
@@ -80,7 +80,7 @@ cols = c(rgb(1,0,0, 2*gwas_out$MAF[1:chr_rep[1]]), rgb(0,1,0, 2*gwas_out$MAF[(ch
 q3 = ggplot(data=gwas_out, mapping=aes(x=-log(ppoints(length(P_sxn)),10),y=-log(sort(P_sxn,decreasing=FALSE),10))) +
   geom_point(colour="grey") +
   geom_abline(intercept=0,slope=1,linetype="dashed") +
-  theme_classic() + ggtitle(expression("asymmetric effects "*beta[12])) +
+  theme_classic() + ggtitle(expression("Asymmetric effects "*beta[12])) +
   xlab(expression("Expected "*-log[10](p))) + ylab(expression("Observed "*-log[10](p)))
 
 q = q1 + q2 + q3 + plot_annotation(tag_levels="a")
@@ -97,13 +97,13 @@ x = coord(gwas_out$Chr,gwas_out$Position)
 man1 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_self))) + geom_point(colour=cols) +
   theme_classic() + ylab("Association score") + xlab("Chromosomes") + 
   ggplot2::theme(axis.ticks.x=ggplot2::element_blank(),axis.text.x=ggplot2::element_blank()) + 
-  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("individual effects "*beta[1]))
+  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("Individual effects "*beta[1]))
 
 x = coord(gwas_out$Chr,gwas_out$Position)
 man2 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_nei))) + geom_point(colour=cols) +
   theme_classic() + ylab("Association score") + xlab("Chromosomes") + 
   ggplot2::theme(axis.ticks.x=ggplot2::element_blank(),axis.text.x=ggplot2::element_blank()) + 
-  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("genotype similarity effects "*beta[2]))
+  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("Genotype similarity effects "*beta[2]))
 
 h1 = ggplot(subset(gwas_out,P_nei<0.0001),aes(x=beta_nei)) + geom_histogram() + 
   theme_classic() + ylab("No. of SNPs") + xlab(expression("Estimated "*beta[2]))
@@ -112,7 +112,7 @@ gwas_out = read.csv("BranchNoNeiGWASbolting_CHZ2019_scaledLMasym.csv", header=TR
 man3 = ggplot(data.frame(gwas_out,x),aes(x=x,y=-log10(gwas_out$P_sxn))) + geom_point(colour=cols) +
   theme_classic() + ylab("Association score") + xlab("Chromosomes") + 
   ggplot2::theme(axis.ticks.x=ggplot2::element_blank(),axis.text.x=ggplot2::element_blank()) + 
-  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("asymmetric effects "*beta[12]))
+  geom_hline(yintercept=-log10(p_adj),lty=2,col=grey(0.5,0.5)) + ggtitle(expression("Asymmetric effects "*beta[12]))
 
 mh = ((man1 / man2 / man3) | h1) + plot_layout(widths=c(3,1)) + plot_annotation(tag_levels="a")
 ggsave(mh,filename="ManhattanLM.png",width=12,height=6,dpi=600)
@@ -127,13 +127,13 @@ cols = c(rgb(1,0,0, 2*gwas_out$MAF[1:chr_rep[1]]), rgb(0,1,0, 2*gwas_out$MAF[(ch
 q1 = ggplot(data=gwas_out, mapping=aes(x=-log(ppoints(length(P_self)),10),y=-log(sort(P_self,decreasing=FALSE),10))) +
   geom_point(colour="grey") +
   geom_abline(intercept=0,slope=1,linetype="dashed") +
-  theme_classic() + ggtitle(expression("individual effects "*beta[1])) +
+  theme_classic() + ggtitle(expression("Individual effects "*beta[1])) +
   xlab(expression("Expected "*-log[10](p))) + ylab(expression("Observed "*-log[10](p)))
 
 q2 = ggplot(data=gwas_out, mapping=aes(x=-log(ppoints(length(P_nei)),10),y=-log(sort(P_nei,decreasing=FALSE),10))) +
   geom_point(colour="grey") +
   geom_abline(intercept=0,slope=1,linetype="dashed") +
-  theme_classic() + ggtitle(expression("genotype similarity effects "*beta[2])) +
+  theme_classic() + ggtitle(expression("Genotype similarity effects "*beta[2])) +
   xlab(expression("Expected "*-log[10](p))) + ylab(expression("Observed "*-log[10](p)))
 
 gwas_out = read.csv("BranchNoNeiGWASbolting_CHZ2019_scaledLMasym.csv", header=TRUE)
@@ -143,7 +143,7 @@ cols = c(rgb(1,0,0, 2*gwas_out$MAF[1:chr_rep[1]]), rgb(0,1,0, 2*gwas_out$MAF[(ch
 q3 = ggplot(data=gwas_out, mapping=aes(x=-log(ppoints(length(P_sxn)),10),y=-log(sort(P_sxn,decreasing=FALSE),10))) +
   geom_point(colour="grey") +
   geom_abline(intercept=0,slope=1,linetype="dashed") +
-  theme_classic() + ggtitle(expression("asymmetric effects "*beta[12])) +
+  theme_classic() + ggtitle(expression("Asymmetric effects "*beta[12])) +
   xlab(expression("Expected "*-log[10](p))) + ylab(expression("Observed "*-log[10](p)))
 
 q = q1 + q2 + q3 + plot_annotation(tag_levels="a")
